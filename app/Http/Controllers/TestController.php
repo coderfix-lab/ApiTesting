@@ -36,20 +36,16 @@ class TestController extends Controller
 
 
         $arr= $request->all();
-
-
-
         $method=$arr['method'];
-
         $url=$arr['url'];
 
-        $url="http://www.localhost.com:8080/LaravelApi/public/v1/tasks";
+//        $url="http://www.localhost.com:8080/LaravelApi/public/v1/tasks";
 
         $result=$this->curl($url,$method);
-        header("Content-type: text/html; charset=utf-8");
-        var_dump($result);
+//        header("Content-type: text/html; charset=utf-8");
+//        var_dump($rephpult);
 
-
+        return response()->json($result);
 
 //        if (1) {
 //

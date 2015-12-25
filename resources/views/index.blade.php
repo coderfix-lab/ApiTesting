@@ -38,6 +38,11 @@
     <link rel="shortcut icon" href="favicon.ico">
     <link href="{{ asset('assets/global/css/csshake.min.css')}} " type="text/css"  rel="stylesheet" >
     <link href="{{ asset('assets/global/css/animate.min.css')}} " type="text/css"  rel="stylesheet" >
+    <style>
+        .return{
+            overflow-y:visible
+        }
+    </style>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -374,7 +379,7 @@
                     <div class="portlet light">
                         <div class="portlet-title">
                             <div class="caption font-red-sunglo">
-                                <i class="icon-settings font-red-sunglo"></i>
+                                <i class="fa fa-space-shuttle font-red-sunglo"></i>
                                 <span class="caption-subject bold uppercase"> 在线HTTP POST/GET接口测试工具</span>
                             </div>
                             <div class="actions">
@@ -469,6 +474,57 @@
 
                 </div>
 
+            </div>
+
+
+
+            {{--返回的结果--}}
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- BEGIN SAMPLE FORM PORTLET-->
+                    <div class="portlet light">
+                        <div class="portlet-title">
+                            <div class="caption font-green-haze">
+                                <i class="fa fa-paper-plane-o font-green-haze"></i>
+                                <span class="caption-subject bold uppercase"> HTTP请求返回结果</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <form role="form" class="form-horizontal">
+                                <div class="form-body">
+                                    <div class="form-group form-md-line-input has-success">
+                                        <label class="col-md-2 control-label" for="form_control_1">HTTP Body</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control return" rows="3" placeholder="" id="return_body"></textarea>
+                                            <div class="form-control-focus">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-md-line-input has-success">
+                                        <label class="col-md-2 control-label" for="form_control_1">HTTP Headers</label>
+                                        <div class="col-md-10">
+                                            <textarea class="form-control return" rows="3" placeholder="" id="return_header" ></textarea>
+                                            <div class="form-control-focus">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <button type="button" class="btn default" id="clear_result">清空结果</button>
+                                            <button type="button" class="btn blue" id="decode_result">解析body</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- END SAMPLE FORM PORTLET-->
+
+
+                </div>
             </div>
 
 
@@ -570,6 +626,8 @@
 <script src="{{ asset('assets/admin/pages/scripts/index3.js')}} " type="text/javascript"></script>
 <script src="{{ asset('assets/admin/pages/scripts/tasks.js')}} " type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
+{{--//引入自动增加文本域高度的js--}}
+<script src="{{ asset('assets/global/scripts/textareaAutoHeight.js') }}"></script>
 <script>
     //自己写,添加一个对象
     function addHearder(){
@@ -596,27 +654,23 @@
     });
     $('.page-logo').addClass('animated bounce');
 
+    //ajax提交数据
     $('#com').click( function(){
-
         var method = $('#method').val();
         var url = $('#url').val();
     $.ajax({
         type: 'POST',
         url: 'ajax/create',
         //传递参数
-        data: {  m : method , url : url},
+        data: {  method : method , url : url},
         dataType: 'json',
         headers: {
            // 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         },
         success: function(data){
-            alert(data.status)
-
-            for(var key in data.status){
-                alert(key)
-                alert(data.status[key])
-
-            }
+            str_header=JSON.stringify(data[1], null, 4);
+            $("#return_body").val(data[0]);
+            $("#return_header").val(str_header);
         },
 
         error: function(xhr, type){
@@ -628,6 +682,28 @@
     });}
     );
 
+    //清空结果
+    $('#clear_result').click(function(){
+        $("#return_body").val("");
+        $("#return_header").val("");
+    });
+
+    //去掉引号,再次进行解析
+    $('#decode_result').click(function(){
+        var body=JSON.parse( $("#return_body").val());
+
+       var destr_body=JSON.stringify(body, null, 4);
+//        alert(destr_body);
+        $("#return_body").val(destr_body);
+
+    });
+
+    //返回值自动撑起高度
+    $('textarea').tah({
+        moreSpace:15,   //输入框底部预留的空白, 默认15, 单位像素
+        maxHeight:1000,  //指定Textarea的最大高度, 默认600, 单位像素
+        animateDur:200  //调整高度时的动画过渡时间, 默认200, 单位毫秒
+    });
 
 </script>
 <!-- END JAVASCRIPTS -->
