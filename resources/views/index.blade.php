@@ -38,11 +38,6 @@
     <link rel="shortcut icon" href="favicon.ico">
     <link href="{{ asset('assets/global/css/csshake.min.css')}} " type="text/css"  rel="stylesheet" >
     <link href="{{ asset('assets/global/css/animate.min.css')}} " type="text/css"  rel="stylesheet" >
-    <style>
-        .return{
-            overflow-y:visible
-        }
-    </style>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -420,25 +415,32 @@
 
                                     {{--添加header参数--}}
 
-                                    <div class="form-group form-md-line-input has-info">
-                                        <div class="input-group">
-                                             <span class="input-group-btn btn-left">
-											<button class="btn blue-madison addHeader" type="button">添加</button>
-											</span>
+                                    <div class="form-group form-md-line-input has-info" id="params_table">
+                                        {{--<div class="input-group textbox">--}}
 
-                                            <div class="input-group-control">
-                                                <input type="text" class="form-control " placeholder="">
-                                                <label for="form_control_1">Header名称</label>
-                                            </div>
+                                        {{--<div class="input-group-control">--}}
+                                        {{--<input type="text" class="form-control " placeholder="请输入Header名称">--}}
+                                        {{--<label for="form_control_1">Header名称</label>--}}
+                                        {{--</div>--}}
 
-                                            <div class="input-group-control">
-                                                <input type="text" class="form-control " placeholder="">
-                                                <label for="form_control_1">Header值</label>
-                                            </div>
+                                        {{--<div class="input-group-control">--}}
+                                        {{--<input type="text" class="form-control " placeholder="请输入Header值">--}}
+                                        {{--<label for="form_control_1">Header值</label>--}}
+                                        {{--</div>--}}
 
-                                            <span class="input-group-btn btn-right">
-											<button class="btn blue-madison" type="button">删除</button>
-											</span>
+                                        {{--<span class="input-group-btn btn-right">--}}
+                                        {{--<button type="button" class="btn btn-danger">删除</button>--}}
+                                        {{--</span>--}}
+
+                                        {{--</div>--}}
+                                        <div style="position:absolute;top: 0;width: 100%">
+                                            <label for="form_control_1 " style="width: 50%">Header名称</label>
+                                            <label for="form_control_1 " style="width: 49%">Header值</label>
+                                        </div>
+                                        <div id="params_end" style="margin-top:30px;">
+         <span class="input-group-btn btn-left">
+             <button class="btn blue-madison addHeader" type="button" id="add_url_parameter" >添加参数</button>
+         </span>
                                         </div>
 
                                     </div>
@@ -450,12 +452,34 @@
 											</span>
 
                                             <div class="input-group-control">
-                                                <input type="text" class="form-control " placeholder="">
+                                                <input type="text" class="form-control " placeholder="" name="names[]">
                                                 <label for="form_control_1">Body参数名称</label>
                                             </div>
 
                                             <div class="input-group-control">
-                                                <input type="text" class="form-control " placeholder="">
+                                                <input type="text" class="form-control " placeholder="" name="values[]">
+                                                <label for="form_control_1">Body参数值</label>
+                                            </div>
+
+                                            <span class="input-group-btn btn-right">
+											<button class="btn blue-madison" type="button">删除</button>
+											</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group form-md-line-input has-info">
+                                        <div class="input-group">
+                                             <span class="input-group-btn btn-left">
+											<button class="btn blue-madison" type="button">添加</button>
+											</span>
+
+                                            <div class="input-group-control">
+                                                <input type="text" class="form-control " placeholder="" name="names[]">
+                                                <label for="form_control_1">Body参数名称</label>
+                                            </div>
+
+                                            <div class="input-group-control">
+                                                <input type="text" class="form-control " placeholder="" name="values[]">
                                                 <label for="form_control_1">Body参数值</label>
                                             </div>
 
@@ -629,6 +653,7 @@
 {{--//引入自动增加文本域高度的js--}}
 <script src="{{ asset('assets/global/scripts/textareaAutoHeight.js') }}"></script>
 <script>
+
     //自己写,添加一个对象
     function addHearder(){
         //添加对应的元素
@@ -641,6 +666,7 @@
                 addHearder()
     }
     );
+
     jQuery(document).ready(function() {
         Metronic.init(); // init metronic core componets
         Layout.init(); // init layout
@@ -650,19 +676,40 @@
         Tasks.initDashboardWidget(); // init tash dashboard widget
 
 
-
     });
     $('.page-logo').addClass('animated bounce');
+
+
+    function adddle(){
+        var testbox ="<div class='input-group textbox' style='margin-top: 20px'>"
+                +"<div class='input-group-control' >"
+                +"<input type='text'  class='form-control ' placeholder='请输入Header名称'></div>"
+                +"<div class='input-group-control'>"
+                +"<input type='text' class='form-control ' placeholder='请输入Header值'></div>"
+                +"<span class='input-group-btn btn-right'>"
+                +"<button type='button' class='btn btn-danger' onclick='del($(this));'>删除</button></span></div>";
+        $("#params_table").prepend(testbox);
+    }
+    function del(obj){
+        obj.parent().parent().remove();
+    }
+
+
+    $('#add_url_parameter').click(function(){
+        adddle();
+    });
 
     //ajax提交数据
     $('#com').click( function(){
         var method = $('#method').val();
         var url = $('#url').val();
+        var names= JSON.stringify( $('input[name=names]'));
+//        alert(names);
     $.ajax({
         type: 'POST',
         url: 'ajax/create',
         //传递参数
-        data: {  method : method , url : url},
+        data: {  method : method , url : url  },
         dataType: 'json',
         headers: {
            // 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -674,7 +721,6 @@
         },
 
         error: function(xhr, type){
-
             alert('请重试')
 
         }
@@ -691,9 +737,7 @@
     //去掉引号,再次进行解析
     $('#decode_result').click(function(){
         var body=JSON.parse( $("#return_body").val());
-
        var destr_body=JSON.stringify(body, null, 4);
-//        alert(destr_body);
         $("#return_body").val(destr_body);
 
     });
@@ -704,6 +748,9 @@
         maxHeight:1000,  //指定Textarea的最大高度, 默认600, 单位像素
         animateDur:200  //调整高度时的动画过渡时间, 默认200, 单位毫秒
     });
+
+
+
 
 </script>
 <!-- END JAVASCRIPTS -->

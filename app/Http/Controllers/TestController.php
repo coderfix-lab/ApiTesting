@@ -39,6 +39,13 @@ class TestController extends Controller
         $method=$arr['method'];
         $url=$arr['url'];
 
+        //数组形式的提交
+
+        $names=$arr['names'];
+        $values=$arr['values'];
+        return response()->json(array($names,$values));
+
+
 //        $url="http://www.localhost.com:8080/LaravelApi/public/v1/tasks";
 
         $result=$this->curl($url,$method);
@@ -64,7 +71,7 @@ class TestController extends Controller
     }
 
 
-    function curl($url, $method='GET',$fields = array(), $auth = false){
+    function curl($url, $method='GET',$fields = array(), $headers=[],$auth = false){
 
         $curl = curl_init($url);
         curl_setopt ( $curl, CURLOPT_CUSTOMREQUEST, $method );
@@ -72,6 +79,17 @@ class TestController extends Controller
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_VERBOSE, 1);
         curl_setopt($curl, CURLOPT_HEADER, 1);
+
+
+        $header[0] = "Accept: text/xml,application/xml,application/xhtml+xml,";
+        $header[0] .= "text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5";
+        $header[] = "Cache-Control: max-age=0";
+        $header[] = "Connection: keep-alive";
+        $header[] = "Keep-Alive: 300";
+        $header[] = "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7";
+        $header[] = "Accept-Language: en-us,en;q=0.5";
+        $header[] = "Pragma: "; // browsers keep this blank.
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array_merge($header,$headers));
 
         if($auth){
             curl_setopt($curl, CURLOPT_USERPWD, "$auth");
