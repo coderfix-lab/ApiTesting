@@ -10,10 +10,11 @@
     <title>ApiTesting | CoderFix.cn</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport">
-    <meta content="" name="description">
-    <meta content="" name="author">
+    <meta content="{{ $desc }}" name="description">
+    <meta content="{{$author}}" name="author">
+    <meta name="_token" content="{{ csrf_token() }}"/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all')}} " type="text/css"  rel="stylesheet" >
+    <link href="{{ asset('assets/global/css/css.css')}} " type="text/css"  rel="stylesheet" >
     <link href="{{ asset('assets/global/plugins/font-awesome/css/font-awesome.min.css')}} " type="text/css"  rel="stylesheet" >
     <link href="{{ asset('assets/global/plugins/simple-line-icons/simple-line-icons.min.css')}} " type="text/css"  rel="stylesheet" >
     <link href="{{ asset('assets/global/plugins/bootstrap/css/bootstrap.min.css')}} " type="text/css"  rel="stylesheet" >
@@ -367,8 +368,108 @@
             {{--</ul>--}}
             <!-- END PAGE BREADCRUMB -->
             <!-- BEGIN PAGE CONTENT INNER -->
+            <div class="row">
+                <div class="col-md-12 ">
+                    <!-- BEGIN SAMPLE FORM PORTLET-->
+                    <div class="portlet light">
+                        <div class="portlet-title">
+                            <div class="caption font-red-sunglo">
+                                <i class="icon-settings font-red-sunglo"></i>
+                                <span class="caption-subject bold uppercase"> 在线HTTP POST/GET接口测试工具</span>
+                            </div>
+                            <div class="actions">
 
-            我是网页内容
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <form role="form" >
+                                <div class="form-body">
+                                    <div class="form-group form-md-line-input has-info">
+                                        <div class="input-group">
+
+                                            <div class="input-group-control">
+                                                <select class="form-control" id="method">
+                                                    <option value="GET">GET</option>
+                                                    <option value="POST">POST</option>
+                                                    <option value="PUT">PUT</option>
+                                                    <option value="PATCH">PATCH</option>
+                                                    <option value="DELETE">DELETE</option>
+                                                    <option value="COPY">COPY</option>
+                                                    <option value="HEAD">HEAD</option>
+                                                    <option value="OPTIONS">OPTIONS</option>
+                                                    <option value="LINK">LINK</option>
+                                                    <option value="UNLINK">UNLINK</option>
+                                                    <option value="PURGE">PURGE</option>
+                                                </select>
+                                                <label for="form_control_1">请求方式</label>
+                                            </div>
+                                            <div class="input-group-control">
+                                                <input type="text" class="form-control " placeholder="http://" id="url">
+                                                <label for="form_control_1">请求地址</label>
+                                            </div>
+                                            <span class="input-group-btn btn-right">
+											<button class="btn blue-madison" type="button" id="com">发送请求</button>
+											</span>
+                                        </div>
+                                    </div>
+
+                                    {{--添加header参数--}}
+
+                                    <div class="form-group form-md-line-input has-info">
+                                        <div class="input-group">
+                                             <span class="input-group-btn btn-left">
+											<button class="btn blue-madison addHeader" type="button">添加</button>
+											</span>
+
+                                            <div class="input-group-control">
+                                                <input type="text" class="form-control " placeholder="">
+                                                <label for="form_control_1">Header名称</label>
+                                            </div>
+
+                                            <div class="input-group-control">
+                                                <input type="text" class="form-control " placeholder="">
+                                                <label for="form_control_1">Header值</label>
+                                            </div>
+
+                                            <span class="input-group-btn btn-right">
+											<button class="btn blue-madison" type="button">删除</button>
+											</span>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="form-group form-md-line-input has-info">
+                                        <div class="input-group">
+                                             <span class="input-group-btn btn-left">
+											<button class="btn blue-madison" type="button">添加</button>
+											</span>
+
+                                            <div class="input-group-control">
+                                                <input type="text" class="form-control " placeholder="">
+                                                <label for="form_control_1">Body参数名称</label>
+                                            </div>
+
+                                            <div class="input-group-control">
+                                                <input type="text" class="form-control " placeholder="">
+                                                <label for="form_control_1">Body参数值</label>
+                                            </div>
+
+                                            <span class="input-group-btn btn-right">
+											<button class="btn blue-madison" type="button">删除</button>
+											</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                    <!-- END SAMPLE FORM PORTLET-->
+
+                </div>
+
+            </div>
 
 
 
@@ -394,7 +495,7 @@
             <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
                 <h2>关于</h2>
                 <p>
-                    PHP开发工程师,独立开发者
+
                 </p>
             </div>
 
@@ -470,6 +571,18 @@
 <script src="{{ asset('assets/admin/pages/scripts/tasks.js')}} " type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
+    //自己写,添加一个对象
+    function addHearder(){
+        //添加对应的元素
+        $(".addHearder").prop("outerHTML");
+
+    }
+    //绑定
+    $('.addHeader').click(
+            function(){
+                addHearder()
+    }
+    );
     jQuery(document).ready(function() {
         Metronic.init(); // init metronic core componets
         Layout.init(); // init layout
@@ -477,8 +590,44 @@
         QuickSidebar.init(); // init quick sidebar
         Index.init(); // init index page
         Tasks.initDashboardWidget(); // init tash dashboard widget
+
+
+
     });
     $('.page-logo').addClass('animated bounce');
+
+    $('#com').click( function(){
+
+        var method = $('#method').val();
+        var url = $('#url').val();
+    $.ajax({
+        type: 'POST',
+        url: 'ajax/create',
+        //传递参数
+        data: {  m : method , url : url},
+        dataType: 'json',
+        headers: {
+           // 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        },
+        success: function(data){
+            alert(data.status)
+
+            for(var key in data.status){
+                alert(key)
+                alert(data.status[key])
+
+            }
+        },
+
+        error: function(xhr, type){
+
+            alert('请重试')
+
+        }
+
+    });}
+    );
+
 
 </script>
 <!-- END JAVASCRIPTS -->
