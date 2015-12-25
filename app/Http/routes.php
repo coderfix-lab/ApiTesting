@@ -14,7 +14,7 @@
 Route::get('/', 'TestController@index');
 
 Route::post('/ajax/create', 'TestController@store');
-//Route::get('/ajax/create', 'TestController@store');
+Route::get('/ajax/create', 'TestController@store');
 
 
 /*
