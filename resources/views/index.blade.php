@@ -420,13 +420,19 @@
                                             <label for="form_header"  class="col-md-3">Header名称</label>
                                             <label for="form_header_value" class="col-md-6" >Header值</label>
                                         </div>
-                                        <div id="params_end" style="margin-top:30px;">
-         <span class="input-group-btn btn-left">
-             <button class="btn blue-madison addHeader" type="button" id="add_url_parameter" >添加参数</button>
-         </span>
-                                        </div>
+
 
                                     </div>
+                                    <div class="form-group ">
+
+ <span class="input-group-btn btn-left" style="margin-top:30px;">
+             <button class="btn blue-madison addHeader" type="button" id="add_url_parameter" >添加参数</button>
+         </span>
+
+                                    </div>
+
+
+
 
 
                                     <div class="form-group form-md-line-input has-info" id="params_body">
@@ -434,13 +440,16 @@
                                             <label for="form_header"  class="col-md-3">Body名称</label>
                                             <label for="form_header_value" class="col-md-6" >Body值</label>
                                         </div>
-                                        <div id="params_end" style="margin-top:30px;">
-         <span class="input-group-btn btn-left">
-             <button class="btn blue-madison addBody" type="button" id="add_body_parameter" >添加参数</button>
-         </span>
-                                        </div>
+
 
                                     </div>
+                                    <div class="form-group ">
+
+                                         <span class="input-group-btn btn-left" style="margin-top:30px;">
+             <button class="btn blue-madison addBody" type="button" id="add_body_parameter" >添加参数</button>
+         </span>
+                                    </div>
+
 
 
 
@@ -640,13 +649,13 @@
     function adddle(){
         var testbox ="<div class='input-group textbox' style='margin-top: 20px'>"
                 +"<div class='input-group-control col-md-3' >"
-                +"<input type='text'  class='form-control ' placeholder='请输入Header名称'></div>"
+                +"<input type='text'  name='header_key' class='form-control ' placeholder='请输入Header名称'></div>"
                         +"<div class='form-control-focus'></div> "
                 +"<div class='input-group-control col-md-9'>"
-                +"<input type='text' class='form-control ' placeholder='请输入Header值'></div>"
+                +"<input type='text' name='header_value' class='form-control ' placeholder='请输入Header值'></div>"
                 +"<span class='input-group-btn '>"
                 +"<button type='button' class='btn btn-danger' onclick='del($(this));'>删除</button></span></div>";
-        $("#params_table").prepend(testbox);
+        $("#params_table").append(testbox);
     }
     function del(obj){
         obj.parent().parent().remove();
@@ -661,13 +670,13 @@
     function addBody(){
         var testbox ="<div class='input-group textbox-body' style='margin-top: 20px'>"
                 +"<div class='input-group-control col-md-3' >"
-                +"<input type='text'  class='form-control ' placeholder='请输入Body名称'></div>"
+                +"<input type='text'  class='form-control ' name='body_key' placeholder='请输入Body名称'></div>"
                 +"<div class='form-control-focus'></div> "
                 +"<div class='input-group-control col-md-9'>"
-                +"<input type='text' class='form-control ' placeholder='请输入Body值'></div>"
+                +"<input type='text' class='form-control '  name='body_value' placeholder='请输入Body值'></div>"
                 +"<span class='input-group-btn '>"
                 +"<button type='button' class='btn btn-danger' onclick='del($(this));'>删除</button></span></div>";
-        $("#params_body").prepend(testbox);
+        $("#params_body").append(testbox);
     }
     function del(obj){
         obj.parent().parent().remove();
@@ -679,33 +688,35 @@
     });
 
     //ajax提交数据
-    $('#com').click( function(){
+    $('#com').click( function() {
         var method = $('#method').val();
         var url = $('#url').val();
-        var names= JSON.stringify( $('input[name=names]'));
-//        alert(names);
-    $.ajax({
-        type: 'POST',
-        url: 'ajax/create',
-        //传递参数
-        data: {  method : method , url : url  },
-        dataType: 'json',
-        headers: {
-           // 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        },
-        success: function(data){
-            str_header=JSON.stringify(data[1], null, 4);
-            $("#return_body").val(data[0]);
-            $("#return_header").val(str_header);
-        },
+        var values = [];
+        var aaa = "";
+        var form = $("form").serialize();
 
-        error: function(xhr, type){
-            alert('请重试')
+        $.ajax({
+            type: 'POST',
+            url: 'ajax/create',
+            //传递参数
+            data: {method: method, url: url , form : form},
+            dataType: 'json',
+            headers: {
+                // 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            },
+            success: function (data) {
+                str_header = JSON.stringify(data[1], null, 4);
+                $("#return_body").val(data[0]);
+                $("#return_header").val(str_header);
+            },
 
-        }
+            error: function (xhr, type) {
+                alert('请重试')
 
-    });}
-    );
+            }
+
+        });
+    });
 
     //清空结果
     $('#clear_result').click(function(){

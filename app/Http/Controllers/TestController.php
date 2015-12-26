@@ -38,17 +38,32 @@ class TestController extends Controller
         $arr= $request->all();
         $method=$arr['method'];
         $url=$arr['url'];
+        $form=$arr['form']; //处理对应的header和body
+
+        $form_arr=explode("&",$form);
+
+        //整理出两个数组
+        $header=[]; //拼接成的是 key: value的字符串
+        $bodyas=[];  //拼接成的是 array('key'=>value)的数组
+        foreach($form_arr as $key => $value){
+            //判断是哪个
+            $sub_value=substr($value,0,10);
+            if($sub_value == "header_key"){
+                //拼接当前的和下一个
+                $aaa_str=substr($value,11).": ".urldecode(substr($form_arr[$key + 1],13));
+                $header[]=$aaa_str;
+                continue;
+            }
+            $sub_value=substr($value,0,8);
+            if($sub_value == "body_key"){
+                $bodyas[substr($value,9)]= urldecode( substr($form_arr[$key + 1],10));
+                continue;
+            }
+        }
 
         //数组形式的提交
 
-        $names=$arr['names'];
-        $values=$arr['values'];
-        return response()->json(array($names,$values));
-
-
-//        $url="http://www.localhost.com:8080/LaravelApi/public/v1/tasks";
-
-        $result=$this->curl($url,$method);
+        $result=$this->curl($url,$method,$bodyas,$header);
 //        header("Content-type: text/html; charset=utf-8");
 //        var_dump($rephpult);
 
