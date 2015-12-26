@@ -64,24 +64,13 @@ class TestController extends Controller
         //数组形式的提交
 
         $result=$this->curl($url,$method,$bodyas,$header);
-//        header("Content-type: text/html; charset=utf-8");
-//        var_dump($rephpult);
 
+        //异常处理
+        $header_http=$result[1]["0"];
+        if(count(explode("200",$header_http)) != 2){
+            $result[0]="null";
+        }
         return response()->json($result);
-
-//        if (1) {
-//
-//            return response()->json(array(
-//                'status' => $url,
-//                 'msg' => 'ok',
-//
-//        ));
-//
-//    } else {
-//
-//            return Redirect::back()->withInput()->withErrors('保存失败！');
-//
-//        }
 
     }
 
@@ -93,7 +82,7 @@ class TestController extends Controller
         }
 
         $curl = curl_init($url);
-        curl_setopt ( $curl, CURLOPT_CUSTOMREQUEST, $method );
+        curl_setopt ($curl, CURLOPT_CUSTOMREQUEST, $method );
         curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_VERBOSE, 1);
@@ -123,8 +112,8 @@ class TestController extends Controller
                 curl_setopt($curl, CURLOPT_BINARYTRANSFER, true);
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $fields_string);
             }else{
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true) ; // 获取数据返回
-                curl_setopt($curl, CURLOPT_BINARYTRANSFER, true) ; // 在启用 CURLOPT_RETURNTRANSFER 时候将获取数据返回
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true) ;
+                curl_setopt($curl, CURLOPT_BINARYTRANSFER, true) ;
             }
 
         }
@@ -135,7 +124,6 @@ class TestController extends Controller
         $body = substr($response, $header_size);
 
         $header_rows = explode(PHP_EOL, $header_string);
-//        $header_rows = array_filter($header_rows, trim());
 
         foreach($header_rows as $key => $value){
             $header_rows[$key]=trim($header_rows[$key]);
@@ -158,7 +146,7 @@ class TestController extends Controller
                 }
             }
         }
-        //print_rr($headers);
+
         curl_close($curl);
         return array($body, $headers);
     }

@@ -711,7 +711,7 @@
             },
 
             error: function (xhr, type) {
-                alert('请重试')
+                alert(xhr)
 
             }
 
