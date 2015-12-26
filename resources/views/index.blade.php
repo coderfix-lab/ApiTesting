@@ -416,26 +416,9 @@
                                     {{--添加header参数--}}
 
                                     <div class="form-group form-md-line-input has-info" id="params_table">
-                                        {{--<div class="input-group textbox">--}}
-
-                                        {{--<div class="input-group-control">--}}
-                                        {{--<input type="text" class="form-control " placeholder="请输入Header名称">--}}
-                                        {{--<label for="form_control_1">Header名称</label>--}}
-                                        {{--</div>--}}
-
-                                        {{--<div class="input-group-control">--}}
-                                        {{--<input type="text" class="form-control " placeholder="请输入Header值">--}}
-                                        {{--<label for="form_control_1">Header值</label>--}}
-                                        {{--</div>--}}
-
-                                        {{--<span class="input-group-btn btn-right">--}}
-                                        {{--<button type="button" class="btn btn-danger">删除</button>--}}
-                                        {{--</span>--}}
-
-                                        {{--</div>--}}
                                         <div style="position:absolute;top: 0;width: 100%">
-                                            <label for="form_control_1 " style="width: 50%">Header名称</label>
-                                            <label for="form_control_1 " style="width: 49%">Header值</label>
+                                            <label for="form_header"  class="col-md-3">Header名称</label>
+                                            <label for="form_header_value" class="col-md-6" >Header值</label>
                                         </div>
                                         <div id="params_end" style="margin-top:30px;">
          <span class="input-group-btn btn-left">
@@ -445,50 +428,24 @@
 
                                     </div>
 
-                                    <div class="form-group form-md-line-input has-info">
-                                        <div class="input-group">
-                                             <span class="input-group-btn btn-left">
-											<button class="btn blue-madison" type="button">添加</button>
-											</span>
 
-                                            <div class="input-group-control">
-                                                <input type="text" class="form-control " placeholder="" name="names[]">
-                                                <label for="form_control_1">Body参数名称</label>
-                                            </div>
-
-                                            <div class="input-group-control">
-                                                <input type="text" class="form-control " placeholder="" name="values[]">
-                                                <label for="form_control_1">Body参数值</label>
-                                            </div>
-
-                                            <span class="input-group-btn btn-right">
-											<button class="btn blue-madison" type="button">删除</button>
-											</span>
+                                    <div class="form-group form-md-line-input has-info" id="params_body">
+                                        <div style="position:absolute;top: 0;width: 100%">
+                                            <label for="form_header"  class="col-md-3">Body名称</label>
+                                            <label for="form_header_value" class="col-md-6" >Body值</label>
+                                        </div>
+                                        <div id="params_end" style="margin-top:30px;">
+         <span class="input-group-btn btn-left">
+             <button class="btn blue-madison addBody" type="button" id="add_body_parameter" >添加参数</button>
+         </span>
                                         </div>
 
                                     </div>
-                                    <div class="form-group form-md-line-input has-info">
-                                        <div class="input-group">
-                                             <span class="input-group-btn btn-left">
-											<button class="btn blue-madison" type="button">添加</button>
-											</span>
 
-                                            <div class="input-group-control">
-                                                <input type="text" class="form-control " placeholder="" name="names[]">
-                                                <label for="form_control_1">Body参数名称</label>
-                                            </div>
 
-                                            <div class="input-group-control">
-                                                <input type="text" class="form-control " placeholder="" name="values[]">
-                                                <label for="form_control_1">Body参数值</label>
-                                            </div>
 
-                                            <span class="input-group-btn btn-right">
-											<button class="btn blue-madison" type="button">删除</button>
-											</span>
-                                        </div>
 
-                                    </div>
+
                                 </div>
 
                             </form>
@@ -682,11 +639,12 @@
 
     function adddle(){
         var testbox ="<div class='input-group textbox' style='margin-top: 20px'>"
-                +"<div class='input-group-control' >"
+                +"<div class='input-group-control col-md-3' >"
                 +"<input type='text'  class='form-control ' placeholder='请输入Header名称'></div>"
-                +"<div class='input-group-control'>"
+                        +"<div class='form-control-focus'></div> "
+                +"<div class='input-group-control col-md-9'>"
                 +"<input type='text' class='form-control ' placeholder='请输入Header值'></div>"
-                +"<span class='input-group-btn btn-right'>"
+                +"<span class='input-group-btn '>"
                 +"<button type='button' class='btn btn-danger' onclick='del($(this));'>删除</button></span></div>";
         $("#params_table").prepend(testbox);
     }
@@ -697,6 +655,27 @@
 
     $('#add_url_parameter').click(function(){
         adddle();
+    });
+
+
+    function addBody(){
+        var testbox ="<div class='input-group textbox-body' style='margin-top: 20px'>"
+                +"<div class='input-group-control col-md-3' >"
+                +"<input type='text'  class='form-control ' placeholder='请输入Body名称'></div>"
+                +"<div class='form-control-focus'></div> "
+                +"<div class='input-group-control col-md-9'>"
+                +"<input type='text' class='form-control ' placeholder='请输入Body值'></div>"
+                +"<span class='input-group-btn '>"
+                +"<button type='button' class='btn btn-danger' onclick='del($(this));'>删除</button></span></div>";
+        $("#params_body").prepend(testbox);
+    }
+    function del(obj){
+        obj.parent().parent().remove();
+    }
+
+
+    $('#add_body_parameter').click(function(){
+        addBody();
     });
 
     //ajax提交数据
