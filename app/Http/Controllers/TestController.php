@@ -86,7 +86,11 @@ class TestController extends Controller
     }
 
 
-    function curl($url, $method='GET',$fields = array(), $headers=[],$auth = false){
+    function curl($url, $method='GET',$fields = [], $headers=[],$auth = false){
+        if($method == "GET"){
+            $fields_string = http_build_query($fields);
+            $url=$url."?".$fields_string;
+        }
 
         $curl = curl_init($url);
         curl_setopt ( $curl, CURLOPT_CUSTOMREQUEST, $method );
@@ -112,10 +116,17 @@ class TestController extends Controller
         }
 
         if($fields){
-            $fields_string = http_build_query($fields);
-//            curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_BINARYTRANSFER, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $fields_string);
+            //POST
+            if($method == "POST"){
+                $fields_string = http_build_query($fields);
+                curl_setopt($curl, CURLOPT_POST, true);
+                curl_setopt($curl, CURLOPT_BINARYTRANSFER, true);
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $fields_string);
+            }else{
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true) ; // 获取数据返回
+                curl_setopt($curl, CURLOPT_BINARYTRANSFER, true) ; // 在启用 CURLOPT_RETURNTRANSFER 时候将获取数据返回
+            }
+
         }
 
         $response = curl_exec($curl);
