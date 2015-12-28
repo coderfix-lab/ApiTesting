@@ -76,6 +76,7 @@ class TestController extends Controller
 
 
     function curl($url, $method='GET',$fields = [], $headers=[],$auth = false){
+        $url=trim($url);
         if($method == "GET"){
             $fields_string = http_build_query($fields);
             $url=$url."?".$fields_string;
