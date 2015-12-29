@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8">
-    <title>ApiTesting | CoderFix.cn</title>
+    <title>HTTP接口调试工具 | CoderFix.cn</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="{{ $desc }}" name="description">
@@ -54,7 +54,7 @@
         <div class="container">
             <!-- BEGIN LOGO -->
             <div class="page-logo shake">
-                <a href="index.html"><img src="{{ asset("assets/admin/layout3/img/logo-default.png")}} " alt="logo" class="logo-default"></a>
+                <a href="index.html"><img src="{{ asset("assets/global/img/logo-default.png")}} " alt="logo" class="logo-default"></a>
             </div>
             <!-- END LOGO -->
 
@@ -74,262 +74,56 @@
                     </li>
                     <li class="menu-dropdown classic-menu-dropdown ">
                         <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
-                            独立作品 <i class="fa fa-angle-down"></i>
+                            开发项目 <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu pull-left">
-                            <li class=" dropdown-submenu">
-                                <a href=":;">
+                            <li >
+                                <a href="http://baidu.com">
                                     <i class="icon-briefcase"></i>
-                                    Data Tables </a>
-                                <ul class="dropdown-menu">
-                                    <li class=" ">
-                                        <a href="table_basic.html">
-                                            Basic Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_tree.html">
-                                            Tree Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_responsive.html">
-                                            Responsive Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_managed.html">
-                                            Managed Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_editable.html">
-                                            Editable Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_advanced.html">
-                                            Advanced Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_ajax.html">
-                                            Ajax Datatables </a>
-                                    </li>
-                                </ul>
+                                    项目1 </a>
                             </li>
-                            <li class=" dropdown-submenu">
-                                <a href=":;">
-                                    <i class="icon-wallet"></i>
-                                    联系</a>
-                                <ul class="dropdown-menu">
-                                    <li class=" ">
-                                        <a href="portlet_general.html">
-                                            General Portlets </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="portlet_general2.html">
-                                            New Portlets #1 <span class="badge badge-roundless badge-danger">new</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="portlet_general3.html">
-                                            New Portlets #2 <span class="badge badge-roundless badge-danger">new</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="portlet_ajax.html">
-                                            Ajax Portlets </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="portlet_draggable.html">
-                                            Draggable Portlets </a>
-                                    </li>
-                                </ul>
+                            <li >
+                                <a href="http://baidu.com">
+                                    <i class="icon-briefcase"></i>
+                                    项目2 </a>
                             </li>
-                            <li class=" dropdown-submenu">
-                                <a href=":;">
-                                    <i class="icon-bar-chart"></i>
-                                    Charts </a>
-                                <ul class="dropdown-menu">
-                                    <li class=" ">
-                                        <a href="charts_amcharts.html">
-                                            amChart </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="charts_flotcharts.html">
-                                            Flotchart </a>
-                                    </li>
-                                </ul>
+                            <li >
+                                <a href="http://baidu.com">
+                                    <i class="icon-briefcase"></i>
+                                    项目3 </a>
                             </li>
+
                         </ul>
                     </li>
                     <li class="menu-dropdown classic-menu-dropdown ">
                         <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
-                            独立作品 <i class="fa fa-angle-down"></i>
+                            作品 <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu pull-left">
-                            <li class=" dropdown-submenu">
-                                <a href=":;">
+                            <li >
+                                <a href="http://baidu.com">
                                     <i class="icon-briefcase"></i>
-                                    Data Tables </a>
-                                <ul class="dropdown-menu">
-                                    <li class=" ">
-                                        <a href="table_basic.html">
-                                            Basic Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_tree.html">
-                                            Tree Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_responsive.html">
-                                            Responsive Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_managed.html">
-                                            Managed Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_editable.html">
-                                            Editable Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_advanced.html">
-                                            Advanced Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_ajax.html">
-                                            Ajax Datatables </a>
-                                    </li>
-                                </ul>
+                                    项目1 </a>
                             </li>
-                            <li class=" dropdown-submenu">
-                                <a href=":;">
-                                    <i class="icon-wallet"></i>
-                                    联系</a>
-                                <ul class="dropdown-menu">
-                                    <li class=" ">
-                                        <a href="portlet_general.html">
-                                            General Portlets </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="portlet_general2.html">
-                                            New Portlets #1 <span class="badge badge-roundless badge-danger">new</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="portlet_general3.html">
-                                            New Portlets #2 <span class="badge badge-roundless badge-danger">new</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="portlet_ajax.html">
-                                            Ajax Portlets </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="portlet_draggable.html">
-                                            Draggable Portlets </a>
-                                    </li>
-                                </ul>
+                            <li >
+                                <a href="http://baidu.com">
+                                    <i class="icon-briefcase"></i>
+                                    项目2 </a>
                             </li>
-                            <li class=" dropdown-submenu">
-                                <a href=":;">
-                                    <i class="icon-bar-chart"></i>
-                                    Charts </a>
-                                <ul class="dropdown-menu">
-                                    <li class=" ">
-                                        <a href="charts_amcharts.html">
-                                            amChart </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="charts_flotcharts.html">
-                                            Flotchart </a>
-                                    </li>
-                                </ul>
+                            <li >
+                                <a href="http://baidu.com">
+                                    <i class="icon-briefcase"></i>
+                                    项目3 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-dropdown classic-menu-dropdown ">
-                        <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
-                            独立作品 <i class="fa fa-angle-down"></i>
-                        </a>
-                        <ul class="dropdown-menu pull-left">
-                            <li class=" dropdown-submenu">
-                                <a href=":;">
-                                    <i class="icon-briefcase"></i>
-                                    Data Tables </a>
-                                <ul class="dropdown-menu">
-                                    <li class=" ">
-                                        <a href="table_basic.html">
-                                            Basic Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_tree.html">
-                                            Tree Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_responsive.html">
-                                            Responsive Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_managed.html">
-                                            Managed Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_editable.html">
-                                            Editable Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_advanced.html">
-                                            Advanced Datatables </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="table_ajax.html">
-                                            Ajax Datatables </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class=" dropdown-submenu">
-                                <a href=":;">
-                                    <i class="icon-wallet"></i>
-                                    联系</a>
-                                <ul class="dropdown-menu">
-                                    <li class=" ">
-                                        <a href="portlet_general.html">
-                                            General Portlets </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="portlet_general2.html">
-                                            New Portlets #1 <span class="badge badge-roundless badge-danger">new</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="portlet_general3.html">
-                                            New Portlets #2 <span class="badge badge-roundless badge-danger">new</span>
-                                        </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="portlet_ajax.html">
-                                            Ajax Portlets </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="portlet_draggable.html">
-                                            Draggable Portlets </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class=" dropdown-submenu">
-                                <a href=":;">
-                                    <i class="icon-bar-chart"></i>
-                                    Charts </a>
-                                <ul class="dropdown-menu">
-                                    <li class=" ">
-                                        <a href="charts_amcharts.html">
-                                            amChart </a>
-                                    </li>
-                                    <li class=" ">
-                                        <a href="charts_flotcharts.html">
-                                            Flotchart </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
+                    <li >
+                        <a href="index.html">GitHub</a>
                     </li>
+                    <li >
+                        <a href="">CSDN博客</a>
+                    </li>
+
                 </ul>
             </div>
             <!-- END MEGA MENU -->
@@ -523,6 +317,7 @@
             <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
                 <h2>关于</h2>
                 <p>
+                    90后PHP开发,Swift学习中,前端学习中
 
                 </p>
             </div>

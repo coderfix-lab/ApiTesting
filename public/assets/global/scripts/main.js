@@ -26,7 +26,7 @@ jQuery(document).ready(function() {
 
 
 });
-$('.page-logo').addClass('animated bounce');
+$('.page-logo').addClass('LightSpeedIn  animated');
 
 
 function adddle(){
