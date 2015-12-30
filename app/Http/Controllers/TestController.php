@@ -23,10 +23,20 @@ class TestController extends Controller
         $description="Http调试工具";
 
 
-        return view('index',[
+        return view('apitest',[
             'author'=>$author,
             'desc'=>$description
         ]);
+    }
+
+
+    /**
+     * 图像转换
+     * @param Request $request
+     */
+    public function icon(Request $request){
+
+        
     }
 
 
