@@ -42,6 +42,7 @@ class Swift_Transport_EsmtpTransport extends Swift_Transport_AbstractSmtpTranspo
         'blocking' => 1,
         'tls' => false,
         'type' => Swift_Transport_IoBuffer::TYPE_SOCKET,
+        'stream_context_options' => array(),
         );
 
     /**
@@ -161,6 +162,30 @@ class Swift_Transport_EsmtpTransport extends Swift_Transport_AbstractSmtpTranspo
     }
 
     /**
+     * Sets the stream context options.
+     *
+     * @param array $options
+     *
+     * @return Swift_Transport_EsmtpTransport
+     */
+    public function setStreamOptions($options)
+    {
+        $this->_params['stream_context_options'] = $options;
+
+        return $this;
+    }
+
+    /**
+     * Returns the stream context options.
+     *
+     * @return array
+     */
+    public function getStreamOptions()
+    {
+        return $this->_params['stream_context_options'];
+    }
+
+    /**
      * Sets the source IP.
      *
      * @param string $source
@@ -197,7 +222,8 @@ class Swift_Transport_EsmtpTransport extends Swift_Transport_AbstractSmtpTranspo
         foreach ($handlers as $handler) {
             $assoc[$handler->getHandledKeyword()] = $handler;
         }
-        uasort($assoc, array($this, '_sortHandlers'));
+
+        @uasort($assoc, array($this, '_sortHandlers'));
         $this->_handlers = $assoc;
         $this->_setHandlerParams();
 

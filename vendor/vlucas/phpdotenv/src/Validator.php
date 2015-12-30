@@ -2,10 +2,13 @@
 
 namespace Dotenv;
 
+use Dotenv\Exception\InvalidCallbackException;
+use Dotenv\Exception\ValidationException;
+
 /**
- * Validator.
+ * This is the validator class.
  *
- * Validations to be applied against a number of variables.
+ * It's responsible for applying validations against a number of variables.
  */
 class Validator
 {
@@ -38,7 +41,7 @@ class Validator
 
         $this->assertCallback(
             function ($value) {
-                return !is_null($value);
+                return $value !== null;
             },
             'is missing'
         );
@@ -53,9 +56,24 @@ class Validator
     {
         return $this->assertCallback(
             function ($value) {
-                return (strlen(trim($value)) > 0);
+                return strlen(trim($value)) > 0;
             },
             'is empty'
+        );
+    }
+
+    /**
+     * Assert that each specified variable is an integer.
+     *
+     * @return \Dotenv\Validator
+     */
+    public function isInteger()
+    {
+        return $this->assertCallback(
+            function ($value) {
+                return ctype_digit($value);
+            },
+            'is not an integer'
         );
     }
 
@@ -82,12 +100,14 @@ class Validator
      * @param callable $callback
      * @param string   $message
      *
+     * @throws \Dotenv\Exception\InvalidCallbackException|\Dotenv\Exception\ValidationException
+     *
      * @return \Dotenv\Validator
      */
     protected function assertCallback($callback, $message = 'failed callback assertion')
     {
         if (!is_callable($callback)) {
-            throw new \InvalidArgumentException('Callback must be callable');
+            throw new InvalidCallbackException('The provided callback must be callable.');
         }
 
         $variablesFailingAssertion = array();
@@ -99,8 +119,8 @@ class Validator
         }
 
         if (count($variablesFailingAssertion) > 0) {
-            throw new \RuntimeException(sprintf(
-                'One or more environment variables failed assertions: %s',
+            throw new ValidationException(sprintf(
+                'One or more environment variables failed assertions: %s.',
                 implode(', ', $variablesFailingAssertion)
             ));
         }

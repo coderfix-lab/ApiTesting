@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Mews\Captcha\Captcha;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
 
 class TestController extends Controller
 {
@@ -15,7 +18,6 @@ class TestController extends Controller
 
         if($_POST){
             var_dump($_POST);
-
         }
 
 
@@ -36,7 +38,38 @@ class TestController extends Controller
      */
     public function icon(Request $request){
 
-        
+
+        $author="lixiaoyu";
+        $description="Http调试工具";
+
+        if ($request->method() == "POST")
+        {
+            $rules = ['captcha' => 'required|captcha'];
+            var_dump(Input::all());
+            echo $request->get('captcha');
+            $validator = Validator::make(Input::all(), $rules);
+            if ($validator->fails())
+            {
+                echo '<p style="color: #ff0000;">Incorrect!</p>';
+            }
+            else
+            {
+                echo '<p style="color: #00ff30;">Matched :)</p>';
+            }
+        }
+
+        $form = '<form method="post" action="">';
+        $form .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+        $form .= '<p>' . captcha_img() . '</p>';
+        $form .= '<p><input type="text" name="captcha"></p>';
+        $form .= '<p><button type="submit" name="check">Check</button></p>';
+        $form .= '</form>';
+        return $form;
+
+//        return view('icon',[
+//            'author'=>$author,
+//            'desc'=>$description
+//        ]);
     }
 
 
