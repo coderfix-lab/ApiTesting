@@ -22,7 +22,8 @@ Route::post('/icon/upload', 'TestController@ajaxUpload');
 Route::any('/ajax/create', 'TestController@store');
 //Route::get('/ajax/create', 'TestController@store');
 
-
+//下载文件
+Route::get('/icon/download/{path}', 'TestController@download');
 /*
 |--------------------------------------------------------------------------
 | Application Routes

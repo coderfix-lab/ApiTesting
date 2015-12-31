@@ -89,7 +89,8 @@
                                             {{ $icon['filename'] }}
                                         </td>
                                         <td>
-                                            点击下载
+                                            <a href="icon/download/{{ base64_encode($icon['filepath']) }}" target="_blank" class="btn default blue">
+                                                点击下载 </a>
                                         </td>
                                         <td>
                                             {{ $icon['time'] }}
