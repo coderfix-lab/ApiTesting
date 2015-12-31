@@ -46,14 +46,14 @@
                             </div>
                         </div>
                         <div class="portlet-body form">
-                            <form role="form" >
+                            <form role="form"  action="" method="post" enctype='multipart/form-data' >
                                 <div class="form-body">
 
 
                                     <div class="form-group form-md-line-input">
                                         <label class="col-md-2 control-label" for="form_control_1">源图片</label>
                                         <div class="col-md-10">
-                                            <input type="file" class="form-control" id="form_control_1" placeholder="Enter your email">
+                                            <input type="file" class="form-control" id="form_control_1" name="upimage">
                                             <div class="form-control-focus">
                                             </div>
                                             <span class="help-block">请选择图片</span>
@@ -65,7 +65,7 @@
                                         <div class="col-md-10">
                                             <div class="md-radio-inline">
                                                 <div class="md-radio">
-                                                    <input type="radio" id="c1" name="radio2" class="md-radiobtn">
+                                                    <input type="radio" id="c1" name="size" value="1" class="md-radiobtn">
                                                     <label for="c1">
                                                         <span class="inc"></span>
                                                         <span class="check"></span>
@@ -73,7 +73,7 @@
                                                         16*16 </label>
                                                 </div>
                                                 <div class="md-radio ">
-                                                    <input type="radio" id="c2" name="radio2" class="md-radiobtn" >
+                                                    <input type="radio" id="c2" name="size" value="2" class="md-radiobtn" >
                                                     <label for="c2">
                                                         <span class="inc"></span>
                                                         <span class="check"></span>
@@ -81,7 +81,7 @@
                                                         32*32</label>
                                                 </div>
                                                 <div class="md-radio ">
-                                                    <input type="radio" id="c3" name="radio2" class="md-radiobtn">
+                                                    <input type="radio" id="c3" name="size" value="3" class="md-radiobtn">
                                                     <label for="c3">
                                                         <span class="inc"></span>
                                                         <span class="check"></span>
@@ -89,7 +89,7 @@
                                                         48*48 </label>
                                                 </div>
                                                 <div class="md-radio ">
-                                                    <input type="radio" id="c4" name="radio2" class="md-radiobtn" checked="">
+                                                    <input type="radio" id="c4" name="size" value="4" class="md-radiobtn" checked="">
                                                     <label for="c4">
                                                         <span class="inc"></span>
                                                         <span class="check"></span>
@@ -97,7 +97,7 @@
                                                         64*64</label>
                                                 </div>
                                                 <div class="md-radio ">
-                                                    <input type="radio" id="c5" name="radio2" class="md-radiobtn">
+                                                    <input type="radio" id="c5" name="size" value="5" class="md-radiobtn">
                                                     <label for="c5">
                                                         <span class="inc"></span>
                                                         <span class="check"></span>
@@ -110,7 +110,7 @@
                                     <div class="form-group form-md-line-input">
                                         <label class="col-md-2 control-label" for="form_control_1">验证码</label>
                                         <div class="col-md-10 ">
-
+                                            <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
                                             <div class="box" id="div_geetest_lib">
                                                 <div id="div_id_embed"></div>
                                                 <script type="text/javascript">
@@ -188,7 +188,7 @@
                                     </div>
 
                                     <div class="form-group form-actions noborder">
-                                        <button type="button" class="btn blue">在线生成favicon.ico图标</button>
+                                        <button type="commit" class="btn blue">在线生成favicon.ico图标</button>
 
                                     </div>
 
