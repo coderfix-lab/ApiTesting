@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74c3ddfa-f3ab-4429-a5b3-75962045d165" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Libs/Iconv.php" afterPath="$PROJECT_DIR$/app/Libs/Iconv.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/box.blade.php" afterPath="$PROJECT_DIR$/resources/views/box.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/bin/php-parse" afterPath="$PROJECT_DIR$/vendor/bin/php-parse" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/bin/phpunit" afterPath="$PROJECT_DIR$/vendor/bin/phpunit" />
@@ -29,8 +30,18 @@
       <file leaf-file-name="box.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/box.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6727829">
-              <caret line="108" column="42" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.32721713">
+              <caret line="183" column="40" selection-start-line="183" selection-start-column="40" selection-end-line="183" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Iconv.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Libs/Iconv.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-19.375">
+              <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -39,10 +50,11 @@
       <file leaf-file-name="TestController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-25.0">
-              <caret line="124" column="47" selection-start-line="124" selection-start-column="47" selection-end-line="124" selection-end-column="47" />
+            <state vertical-scroll-proportion="-21.333334">
+              <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
+                <element signature="e#1727#5673#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -61,7 +73,7 @@
       <file leaf-file-name="icon.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/icon.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.875">
+            <state vertical-scroll-proportion="15.0">
               <caret line="91" column="53" selection-start-line="91" selection-start-column="53" selection-end-line="91" selection-end-column="53" />
               <folding>
                 <marker date="1451555065000" expanded="true" signature="10544:11788" placeholder="..." />
@@ -107,16 +119,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="15.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/app.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.269231">
-              <caret line="188" column="12" selection-start-line="188" selection-start-column="12" selection-end-line="188" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -170,7 +172,6 @@
         <option value="$PROJECT_DIR$/public/assets/global/scripts/main.js" />
         <option value="$PROJECT_DIR$/vendor/gee-team/gt-php-sdk/lib/class.geetestlib.php" />
         <option value="$PROJECT_DIR$/vendor/gee-team/gt-php-sdk/lib/class.geetestmsg.php" />
-        <option value="$PROJECT_DIR$/app/Libs/Iconv.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
@@ -178,6 +179,7 @@
         <option value="$PROJECT_DIR$/resources/views/icon.blade.php" />
         <option value="$PROJECT_DIR$/public/temp/.gitignore" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/app/Libs/Iconv.php" />
         <option value="$PROJECT_DIR$/resources/views/box.blade.php" />
       </list>
     </option>
@@ -863,14 +865,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Libs/Iconv.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.625">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/illuminate/html/FormFacade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.375">
@@ -921,38 +915,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.0">
-          <caret line="124" column="47" selection-start-line="124" selection-start-column="47" selection-end-line="124" selection-end-column="47" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/icon.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.875">
-          <caret line="91" column="53" selection-start-line="91" selection-start-column="53" selection-end-line="91" selection-end-column="53" />
-          <folding>
-            <marker date="1451555065000" expanded="true" signature="10544:11788" placeholder="..." />
-            <marker date="1451555065000" expanded="true" signature="11288:11733" placeholder="..." />
-            <marker date="1451555065000" expanded="true" signature="11450:11675" placeholder="..." />
-            <marker date="1451555065000" expanded="true" signature="11987:12634" placeholder="..." />
-            <marker date="1451555065000" expanded="true" signature="13163:14675" placeholder="..." />
-            <marker date="1451555065000" expanded="true" signature="13329:14621" placeholder="..." />
-            <marker date="1451555065000" expanded="true" signature="13471:14122" placeholder="..." />
-            <marker date="1451555065000" expanded="true" signature="13623:14060" placeholder="..." />
-            <marker date="1451555065000" expanded="true" signature="13635:14053" placeholder="..." />
-            <marker date="1451555065000" expanded="true" signature="13726:13987" placeholder="..." />
-            <marker date="1451555065000" expanded="true" signature="14202:14335" placeholder="..." />
-            <marker date="1451555065000" expanded="true" signature="14415:14563" placeholder="..." />
-            <marker date="1451555065000" expanded="true" signature="15080:15298" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/temp/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.11363637">
@@ -977,10 +939,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/icon.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="15.0">
+          <caret line="91" column="53" selection-start-line="91" selection-start-column="53" selection-end-line="91" selection-end-column="53" />
+          <folding>
+            <marker date="1451555065000" expanded="true" signature="10544:11788" placeholder="..." />
+            <marker date="1451555065000" expanded="true" signature="11288:11733" placeholder="..." />
+            <marker date="1451555065000" expanded="true" signature="11450:11675" placeholder="..." />
+            <marker date="1451555065000" expanded="true" signature="11987:12634" placeholder="..." />
+            <marker date="1451555065000" expanded="true" signature="13163:14675" placeholder="..." />
+            <marker date="1451555065000" expanded="true" signature="13329:14621" placeholder="..." />
+            <marker date="1451555065000" expanded="true" signature="13471:14122" placeholder="..." />
+            <marker date="1451555065000" expanded="true" signature="13623:14060" placeholder="..." />
+            <marker date="1451555065000" expanded="true" signature="13635:14053" placeholder="..." />
+            <marker date="1451555065000" expanded="true" signature="13726:13987" placeholder="..." />
+            <marker date="1451555065000" expanded="true" signature="14202:14335" placeholder="..." />
+            <marker date="1451555065000" expanded="true" signature="14415:14563" placeholder="..." />
+            <marker date="1451555065000" expanded="true" signature="15080:15298" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-21.333334">
+          <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+            <element signature="e#1727#5673#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Libs/Iconv.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-19.375">
+          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/box.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6727829">
-          <caret line="108" column="42" selection-start-line="108" selection-start-column="42" selection-end-line="108" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.32721713">
+          <caret line="183" column="40" selection-start-line="183" selection-start-column="40" selection-end-line="183" selection-end-column="40" />
           <folding />
         </state>
       </provider>

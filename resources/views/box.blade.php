@@ -70,7 +70,7 @@
             <div class="hor-menu ">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html">主页</a>
+                        <a href="index.html">首页</a>
                     </li>
                     <li class="menu-dropdown classic-menu-dropdown ">
                         <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
@@ -181,7 +181,7 @@
     </div>
 </div>
 <div class="scroll-to-top">
-    <i class="icon-arrow-up"></i>
+    <i class="icon-arrow-up">我的一路陪伴感谢有你~</i>
 </div>
 <!-- END FOOTER -->
 <!-- BEGIN JAVASCRIPTS (Load javascripts at bottom, this will reduce page load time) -->
