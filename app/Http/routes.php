@@ -17,6 +17,8 @@ Route::any('/icon', 'TestController@icon');
 
 Route::get('/captcha', 'TestController@captcha');
 
+Route::post('/icon/upload', 'TestController@ajaxUpload');
+
 Route::any('/ajax/create', 'TestController@store');
 //Route::get('/ajax/create', 'TestController@store');
 

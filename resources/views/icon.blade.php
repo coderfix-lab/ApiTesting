@@ -1,6 +1,7 @@
 
 @extends('box')
 @section('content')
+
 <!-- BEGIN PAGE CONTAINER -->
 <div class="page-container">
     <!-- BEGIN PAGE HEAD -->
@@ -32,6 +33,83 @@
                 {{--</ul>--}}
             <!-- END PAGE BREADCRUMB -->
             <!-- BEGIN PAGE CONTENT INNER -->
+
+
+            <div class="alert alert-warning alert-dismissable  {{ $error['class'] }} ">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                <strong>出错了!</strong> {{ $error['text'] }}
+            </div>
+
+
+            <div class="row  {{ $icon['class'] }}">
+                <div class="col-md-12">
+                    <!-- BEGIN SAMPLE TABLE PORTLET-->
+                    <div class="portlet light">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="fa fa-cogs font-green-sharp"></i>
+                                <span class="caption-subject font-green-sharp bold uppercase">转换结果</span>
+                            </div>
+                            <div class="tools">
+                                <a href="javascript:;" class="remove" data-original-title="" title="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="table-scrollable table-scrollable-borderless">
+                                <table class="table table-hover table-light">
+                                    <thead>
+                                    <tr class="uppercase">
+                                        <th >
+                                            尺寸
+                                        </th>
+                                        <th>
+                                            预览
+                                        </th>
+                                        <th>
+                                            源文件名
+                                        </th>
+                                        <th>
+                                            下载
+                                        </th>
+                                        <th>
+                                            转换时间
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td >
+                                            {{ $icon['size'] }} x  {{ $icon['size'] }}
+                                        </td>
+                                        <td>
+                                            <img class="" src="{{ $icon['filepath'] }}">
+                                        </td>
+                                        <td>
+                                            {{ $icon['filename'] }}
+                                        </td>
+                                        <td>
+                                            点击下载
+                                        </td>
+                                        <td>
+                                            {{ $icon['time'] }}
+                                        </td>
+
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END SAMPLE TABLE PORTLET-->
+                </div>
+
+            </div>
+
+
+
+
             <div class="row">
                 <div class="col-md-12 ">
                     <!-- BEGIN SAMPLE FORM PORTLET-->
@@ -46,7 +124,7 @@
                             </div>
                         </div>
                         <div class="portlet-body form">
-                            <form role="form"  action="" method="post" enctype='multipart/form-data' >
+                            <form role="form"  action="" method="post" enctype="multipart/form-data" >
                                 <div class="form-body">
 
 
@@ -108,12 +186,13 @@
                                         </div>
                                     </div>
                                     <div class="form-group form-md-line-input">
-                                        <label class="col-md-2 control-label" for="form_control_1">验证码</label>
+                                        <label class="col-md-2 control-label" for="form_control_1"></label>
                                         <div class="col-md-10 ">
-                                            <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+                                            <script  src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
                                             <div class="box" id="div_geetest_lib">
                                                 <div id="div_id_embed"></div>
                                                 <script type="text/javascript">
+
 
                                                     var gtFailbackFrontInitial = function(result) {
                                                         var s = document.createElement('script');
@@ -132,9 +211,8 @@
                                                     }
                                                     //get  geetest server status, use the failback solution
 
-
                                                     var loadGeetest = function(config) {
-
+                                                        console.log(config);
                                                         //1. use geetest capthca
                                                         window.gt_captcha_obj = new window.Geetest({
                                                             gt : config.gt,
@@ -142,7 +220,6 @@
                                                             product : 'embed',
                                                             offline : !config.success
                                                         });
-
                                                         gt_captcha_obj.appendTo("#div_id_embed");
                                                     }
 
@@ -159,15 +236,19 @@
                                                                 setTimeout(function() {
                                                                     if (!window.Geetest) {
                                                                         apiFail = true;
+
                                                                         gtFailbackFrontInitial(result)
                                                                     }
                                                                 }, 1000)
                                                             }
                                                             else if(apiFail) {
+
                                                                 return
                                                             }
                                                             if (status == 2) {
+
                                                                 loadGeetest(result);
+
                                                             }
                                                         }
                                                     })()
@@ -177,7 +258,7 @@
                                                         type : "get",
                                                         dataType : 'JSON',
                                                         success : function(result) {
-                                                            // console.log(result);
+                                                             console.log(result);
                                                             gtcallback(result)
                                                         }
                                                     })
@@ -202,6 +283,7 @@
                 </div>
 
             </div>
+
 
 
             <div class="row">

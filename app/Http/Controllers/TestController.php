@@ -38,114 +38,208 @@ class TestController extends Controller
      * 图像转换
      * @param Request $request
      */
-    public function icon(Request $request){
-//        session_start();
-//        var_dump($_SESSION);
-//
-//
-        $author="lixiaoyu";
-        $description="Http调试工具";
-////        var_dump($request->method());
-        if ($request->method() == 'POST')
-        {
+    public function icon(Request $request)
+    {
+
+        $author = "lixiaoyu";
+        $description = "Http调试工具";
+        $icon_arr=[
+            'class'=>'hidden',
+            'time'=>date("Y-m-d H:i:s"),
+            'filename'=>'',
+            'filepath'=>'',
+            'size'=>0
+        ];
+
+        $error=[
+            'class'=>'hidden',
+            'text'=>'',
+        ];
+        if ($request->method() == 'POST') {
             session_start();
             $GtSdk = new \GeetestLib();
             if ($_SESSION['gtserver'] == 1) {
                 $result = $GtSdk->validate($_POST['geetest_challenge'], $_POST['geetest_validate'], $_POST['geetest_seccode']);
                 if ($result == TRUE) {
-                    echo 'Yes!';
                 } else if ($result == FALSE) {
-                    echo 'No';
+                    $error['text']="验证失败!";
                 } else {
-                    echo 'FORBIDDEN';
+                    $error['text']="验证失败!";
+                }
+            } else {
+                if ($GtSdk->get_answer($_POST['geetest_validate'])) {
+                } else {
+                    $error['text']="验证失败!";
+                }
+            }
+            if ( $error['text'] == "" && isset($_FILES['upimage']['tmp_name']) && $_FILES['upimage']['tmp_name'] && is_uploaded_file($_FILES['upimage']['tmp_name'])) {
+                if ($_FILES['upimage']['type'] > 210000) {
+                    $error['text'] = "你上传的文件体积超过了限制 最大不能超过200k";
+                } else {
+                    $fileext = array("image/pjpeg", "image/gif", "image/x-png", "image/png", "image/jpeg", "image/jpg");
+                    if (!in_array($_FILES['upimage']['type'], $fileext)) {
+                        $error['text'] = "你上传的文件格式不正确 仅支持 jpg，gif，png";
+                    }else {
+                        if ($im = @imagecreatefrompng($_FILES['upimage']['tmp_name']) or $im = @imagecreatefromgif($_FILES['upimage']['tmp_name']) or $im = @imagecreatefromjpeg($_FILES['upimage']['tmp_name'])) {
+                            $imginfo = @getimagesize($_FILES['upimage']['tmp_name']);
+                            if (!is_array($imginfo)) {
+                                $error['text'] = "图形格式错误！";
+                            }else {
+                                switch ($_POST['size']) {
+                                    case 1;
+                                        $resize_im = @imagecreatetruecolor(16, 16);
+                                        $size = 16;
+                                        break;
+                                    case 2;
+                                        $resize_im = @imagecreatetruecolor(32, 32);
+                                        $size = 32;
+                                        break;
+                                    case 3;
+                                        $resize_im = @imagecreatetruecolor(48, 48);
+                                        $size = 48;
+                                        break;
+                                    case 4;
+                                        $resize_im = @imagecreatetruecolor(64, 64);
+                                        $size = 64;
+                                        break;
+                                    case 5;
+                                        $resize_im = @imagecreatetruecolor(128, 128);
+                                        $size = 128;
+                                        break;
+                                    default;
+                                        $resize_im = @imagecreatetruecolor(64, 64);
+                                        $size = 64;
+                                        break;
+                                }
+                                imagecopyresampled($resize_im, $im, 0, 0, 0, 0, $size, $size, $imginfo[0], $imginfo[1]);
+
+                                $icon = new Iconv();
+
+                                $gd_image_array = array($resize_im);
+                                $icon_data = $icon->GDtoICOstr($gd_image_array);
+                                $filename = "temp/" . date("Ymdhis") . rand(1, 1000) . ".ico";
+                                if (file_put_contents($filename, $icon_data)) {
+//                            $output = "生成成功！请点右键->另存为 保存到本地<br><a href="/" mce_href="/""".$filename."/" target=/"_blank/">点击下载</a>";
+//                                    echo $filename;
+                                    //数据展示
+                                    $icon_arr=[
+                                        'class'=>'',
+                                        'time'=>date("Y-m-d H:i:s"),
+                                        'filename'=>$_FILES['upimage']['name'],
+                                        'filepath'=>$filename,
+                                        'size'=>$size
+                                    ];
+                                }
+                            }
+                        } else {
+                                $error['text'] = "生成错误请重试";
+
+                        }
+                    }
                 }
             }else{
-                if ($GtSdk->get_answer($_POST['geetest_validate'])) {
-                    echo "yes";
-                }else{
-                    echo "no";
-                }
+                $error['text'] = "请选择图片!";
             }
 
-            var_dump($_POST);
+        }
 
-            //进行图片处理
-            $output = "";
+        if($error['text'] != ""){
+            $error['class']="";
+        }
 
-                if(isset($_FILES['upimage']['tmp_name']) && $_FILES['upimage']['tmp_name'] && is_uploaded_file($_FILES['upimage']['tmp_name'])){
-                    if($_FILES['upimage']['type']>2100000){
-                        echo "你上传的文件体积超过了限制 最大不能超过2M";
-                        exit();
-                    }
-                    $fileext = array("image/pjpeg","image/gif","image/x-png","image/png","image/jpeg","image/jpg");
-                    if(!in_array($_FILES['upimage']['type'],$fileext)){
-                        echo "你上传的文件格式不正确 仅支持 jpg，gif，png";
-                        exit();
-                    }
-                    if($im = @imagecreatefrompng($_FILES['upimage']['tmp_name']) or $im = @imagecreatefromgif($_FILES['upimage']['tmp_name']) or $im = @imagecreatefromjpeg($_FILES['upimage']['tmp_name'])){
-                        $imginfo = @getimagesize($_FILES['upimage']['tmp_name']);
-                        if(!is_array($imginfo)){
-                            echo "图形格式错误！";
-                        }
-                        switch($_POST['size']){
-                            case 1;
-                                $resize_im = @imagecreatetruecolor(16,16);
-                                $size = 16;
-                                break;
-                            case 2;
-                                $resize_im = @imagecreatetruecolor(32,32);
-                                $size = 32;
-                                break;
-                            case 3;
-                                $resize_im = @imagecreatetruecolor(48,48);
-                                $size = 48;
-                                break;
-                            case 4;
-                                $resize_im = @imagecreatetruecolor(64,64);
-                                $size = 64;
-                                break;
-                            case 5;
-                                $resize_im = @imagecreatetruecolor(128,128);
-                                $size = 128;
-                                break;
-                            default;
-                                $resize_im = @imagecreatetruecolor(64,64);
-                                $size = 64;
-                                break;
-                        }
-                        imagecopyresampled($resize_im,$im,0,0,0,0,$size,$size,$imginfo[0],$imginfo[1]);
-
-                        $icon = new Iconv();
-                        $gd_image_array = array($resize_im);
-                        $icon_data = $icon->GDtoICOstr($gd_image_array);
-                        $filename = "temp/".date("Ymdhis").rand(1,1000).".ico";
-                        if(file_put_contents($filename, $icon_data)){
-//                            $output = "生成成功！请点右键->另存为 保存到本地<br><a href="/" mce_href="/""".$filename."/" target=/"_blank/">点击下载</a>";
-                            echo $filename;
-            }
-                    }else{
-                        echo "生成错误请重试！";
-                    }
-                }
-            exit();
-            }
-
-
-
-
-
-//
-//        $form = '<form method="post" action="">';
-//        $form .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-//        $form .= '<p>' . captcha_img() . '</p>';
-//        $form .= '<p><input type="text" name="captcha"></p>';
-//        $form .= '<p><button type="submit" name="check">Check</button></p>';
-//        $form .= '</form>';
-//        return $form;
-        return view('icon',[
-            'author'=>$author,
-            'desc'=>$description
+        return view('icon', [
+            'author' => $author,
+            'desc' => $description,
+            'icon'=>$icon_arr,
+            'error'=>$error
         ]);
+
+
+    }
+
+
+    /**
+     * ajax上传图片以及判断是不是已经通过了验证
+     */
+    public function ajaxUpload(){
+        session_start();
+        $GtSdk = new \GeetestLib();
+        if ($_SESSION['gtserver'] == 1) {
+            $result = $GtSdk->validate($_POST['geetest_challenge'], $_POST['geetest_validate'], $_POST['geetest_seccode']);
+            if ($result == TRUE) {
+                echo 'Yes!';
+            } else if ($result == FALSE) {
+                echo 'No';
+            } else {
+                echo 'FORBIDDEN';
+            }
+        } else {
+            if ($GtSdk->get_answer($_POST['geetest_validate'])) {
+                echo "yes";
+            } else {
+                echo "no";
+            }
+        }
+
+        //进行图片处理
+        $output = "";
+
+        if (isset($_FILES['upimage']['tmp_name']) && $_FILES['upimage']['tmp_name'] && is_uploaded_file($_FILES['upimage']['tmp_name'])) {
+            if ($_FILES['upimage']['type'] > 2100000) {
+                echo "你上传的文件体积超过了限制 最大不能超过2M";
+                exit();
+            }
+            $fileext = array("image/pjpeg", "image/gif", "image/x-png", "image/png", "image/jpeg", "image/jpg");
+            if (!in_array($_FILES['upimage']['type'], $fileext)) {
+                echo "你上传的文件格式不正确 仅支持 jpg，gif，png";
+                exit();
+            }
+            if ($im = @imagecreatefrompng($_FILES['upimage']['tmp_name']) or $im = @imagecreatefromgif($_FILES['upimage']['tmp_name']) or $im = @imagecreatefromjpeg($_FILES['upimage']['tmp_name'])) {
+                $imginfo = @getimagesize($_FILES['upimage']['tmp_name']);
+                if (!is_array($imginfo)) {
+                    echo "图形格式错误！";
+                }
+                switch ($_POST['size']) {
+                    case 1;
+                        $resize_im = @imagecreatetruecolor(16, 16);
+                        $size = 16;
+                        break;
+                    case 2;
+                        $resize_im = @imagecreatetruecolor(32, 32);
+                        $size = 32;
+                        break;
+                    case 3;
+                        $resize_im = @imagecreatetruecolor(48, 48);
+                        $size = 48;
+                        break;
+                    case 4;
+                        $resize_im = @imagecreatetruecolor(64, 64);
+                        $size = 64;
+                        break;
+                    case 5;
+                        $resize_im = @imagecreatetruecolor(128, 128);
+                        $size = 128;
+                        break;
+                    default;
+                        $resize_im = @imagecreatetruecolor(64, 64);
+                        $size = 64;
+                        break;
+                }
+                imagecopyresampled($resize_im, $im, 0, 0, 0, 0, $size, $size, $imginfo[0], $imginfo[1]);
+
+                $icon = new Iconv();
+                $gd_image_array = array($resize_im);
+                $icon_data = $icon->GDtoICOstr($gd_image_array);
+                $filename = "temp/" . date("Ymdhis") . rand(1, 1000) . ".ico";
+                if (file_put_contents($filename, $icon_data)) {
+//                            $output = "生成成功！请点右键->另存为 保存到本地<br><a href="/" mce_href="/""".$filename."/" target=/"_blank/">点击下载</a>";
+                    echo $filename;
+                }
+            } else {
+                echo "生成错误请重试！";
+            }
+        }
+        exit();
     }
 
 

@@ -159,6 +159,9 @@ return [
         //验证码
         Mews\Captcha\CaptchaServiceProvider::class,
 
+        //HTML
+        Illuminate\Html\HtmlServiceProvider::class,
+
     ],
 
     /*
@@ -207,6 +210,10 @@ return [
 
         //验证码
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+
+        //HTML
+        'Form'=> Illuminate\Html\FormFacade::class,
+        'Html' => Illuminate\Html\HtmlFacade::class
 
     ],
 

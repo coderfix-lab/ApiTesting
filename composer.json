@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "mews/captcha": "^2.1",
-        "gee-team/gt-php-sdk": "dev-master"
+        "gee-team/gt-php-sdk": "dev-master",
+        "illuminate/html": "~5.0"
     },
     "minimum-stability": "dev",
     "require-dev": {
