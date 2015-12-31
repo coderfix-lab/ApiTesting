@@ -101,27 +101,23 @@
                         </a>
                         <ul class="dropdown-menu pull-left">
                             <li >
-                                <a href="http://baidu.com">
+                                <a href="/">
                                     <i class="icon-briefcase"></i>
-                                    项目1 </a>
+                                    Http的Api调试工具 </a>
                             </li>
                             <li >
-                                <a href="http://baidu.com">
+                                <a href="/icon">
                                     <i class="icon-briefcase"></i>
-                                    项目2 </a>
+                                    ico在线转换工具 </a>
                             </li>
-                            <li >
-                                <a href="http://baidu.com">
-                                    <i class="icon-briefcase"></i>
-                                    项目3 </a>
-                            </li>
+
                         </ul>
                     </li>
                     <li >
-                        <a href="index.html">GitHub</a>
+                        <a href="https://github.com/diandianxiyu">GitHub</a>
                     </li>
                     <li >
-                        <a href="">CSDN博客</a>
+                        <a href="http://blog.csdn.net/diandianxiyu_geek">CSDN博客</a>
                     </li>
 
                 </ul>
