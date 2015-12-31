@@ -219,6 +219,10 @@ class Captcha
 
         $this->text = $this->generate();
 
+       session_start();
+        $_SESSION['text']=$this->text;
+
+
         $this->canvas = $this->imageManager->canvas(
             $this->width,
             $this->height,
@@ -288,10 +292,14 @@ class Captcha
             $bag .= $characters[rand(0, count($characters) - 1)];
         }
 
+//        var_dump($this->sensitive);
+//        var_dump($this->hasher->make($this->sensitive ? $bag : $this->str->lower($bag)));
+
         $this->session->put('captcha', [
             'sensitive' => $this->sensitive,
             'key'       => $this->hasher->make($this->sensitive ? $bag : $this->str->lower($bag))
         ]);
+
 
         return $bag;
     }

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6625a018cd71c17acaef5fed56cb26d6",
-    "content-hash": "5930e9ead44e40ef45e891ee1f3f7bbd",
+    "hash": "f5731a23087f6395d75417c0d6f971e5",
+    "content-hash": "9cb21bbe98e4f3b2800f3ed581aff984",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -160,6 +160,42 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
+        },
+        {
+            "name": "gee-team/gt-php-sdk",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/GeeTeam/gt-php-sdk.git",
+                "reference": "fd4b1d8cc6aa30f9c2dc5671ebfddc18e39e892e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/GeeTeam/gt-php-sdk/zipball/fd4b1d8cc6aa30f9c2dc5671ebfddc18e39e892e",
+                "reference": "fd4b1d8cc6aa30f9c2dc5671ebfddc18e39e892e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "tanxu1993",
+                    "email": "tanxu1993@gmail.com"
+                }
+            ],
+            "description": "GtWeb Php Demo",
+            "time": "2015-12-04 09:21:56"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -432,12 +468,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "4e8555048060aa8c355079c6e146e0ac6ba66fb5"
+                "reference": "aeba0056d9fa770969bb4b0bf7d23ee9b476b391"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/4e8555048060aa8c355079c6e146e0ac6ba66fb5",
-                "reference": "4e8555048060aa8c355079c6e146e0ac6ba66fb5",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/aeba0056d9fa770969bb4b0bf7d23ee9b476b391",
+                "reference": "aeba0056d9fa770969bb4b0bf7d23ee9b476b391",
                 "shasum": ""
             },
             "require": {
@@ -464,7 +500,7 @@
                 "symfony/routing": "2.8.*|3.0.*",
                 "symfony/translation": "2.8.*|3.0.*",
                 "symfony/var-dumper": "2.8.*|3.0.*",
-                "vlucas/phpdotenv": "~2.0"
+                "vlucas/phpdotenv": "~2.2"
             },
             "replace": {
                 "illuminate/auth": "self.version",
@@ -552,7 +588,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-12-29 23:59:25"
+            "time": "2015-12-30 23:16:45"
         },
         {
             "name": "league/flysystem",
@@ -1716,12 +1752,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "9eab6c9fa71ea27b6f60f909ae715488cfa2d6a4"
+                "reference": "cb9cbc3aabde3091fa0f7e0357ac110f8f0e9b3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/9eab6c9fa71ea27b6f60f909ae715488cfa2d6a4",
-                "reference": "9eab6c9fa71ea27b6f60f909ae715488cfa2d6a4",
+                "url": "https://api.github.com/repos/symfony/process/zipball/cb9cbc3aabde3091fa0f7e0357ac110f8f0e9b3d",
+                "reference": "cb9cbc3aabde3091fa0f7e0357ac110f8f0e9b3d",
                 "shasum": ""
             },
             "require": {
@@ -1757,7 +1793,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2015-12-28 13:14:56"
+            "time": "2015-12-30 18:45:14"
         },
         {
             "name": "symfony/routing",
@@ -1765,12 +1801,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "04b3d0732f432113a43416d52a781c0249c97fba"
+                "reference": "13b1cca9e354fce3b282a411c45cbea0a21a12f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/04b3d0732f432113a43416d52a781c0249c97fba",
-                "reference": "04b3d0732f432113a43416d52a781c0249c97fba",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/13b1cca9e354fce3b282a411c45cbea0a21a12f8",
+                "reference": "13b1cca9e354fce3b282a411c45cbea0a21a12f8",
                 "shasum": ""
             },
             "require": {
@@ -1831,7 +1867,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2015-12-28 13:14:56"
+            "time": "2015-12-30 10:41:35"
         },
         {
             "name": "symfony/translation",
@@ -3239,7 +3275,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "gee-team/gt-php-sdk": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

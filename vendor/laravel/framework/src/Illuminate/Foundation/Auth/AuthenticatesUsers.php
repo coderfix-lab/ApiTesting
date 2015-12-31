@@ -68,7 +68,7 @@ trait AuthenticatesUsers
 
         $credentials = $this->getCredentials($request);
 
-        if (Auth::attempt($credentials, $request->has('remember'))) {
+        if (Auth::guard($this->getGuard())->attempt($credentials, $request->has('remember'))) {
             return $this->handleUserWasAuthenticated($request, $throttles);
         }
 
@@ -79,11 +79,7 @@ trait AuthenticatesUsers
             $this->incrementLoginAttempts($request);
         }
 
-        return redirect()->back()
-            ->withInput($request->only($this->loginUsername(), 'remember'))
-            ->withErrors([
-                $this->loginUsername() => $this->getFailedLoginMessage(),
-            ]);
+        return $this->sendFailedLoginResponse($request);
     }
 
     /**
@@ -107,14 +103,18 @@ trait AuthenticatesUsers
     }
 
     /**
-     * Get the needed authorization credentials from the request.
+     * Get the failed login response instance.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @param \Illuminate\Http\Request  $response
+     * @return \Illuminate\Http\Response
      */
-    protected function getCredentials(Request $request)
+    protected function sendFailedLoginResponse(Request $request)
     {
-        return $request->only($this->loginUsername(), 'password');
+        return redirect()->back()
+            ->withInput($request->only($this->loginUsername(), 'remember'))
+            ->withErrors([
+                $this->loginUsername() => $this->getFailedLoginMessage(),
+            ]);
     }
 
     /**
@@ -127,6 +127,17 @@ trait AuthenticatesUsers
         return Lang::has('auth.failed')
                 ? Lang::get('auth.failed')
                 : 'These credentials do not match our records.';
+    }
+
+    /**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function getCredentials(Request $request)
+    {
+        return $request->only($this->loginUsername(), 'password');
     }
 
     /**
@@ -171,5 +182,15 @@ trait AuthenticatesUsers
         return in_array(
             ThrottlesLogins::class, class_uses_recursive(get_class($this))
         );
+    }
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return string|null
+     */
+    protected function getGuard()
+    {
+        return property_exists($this, 'guard') ? $this->guard : null;
     }
 }

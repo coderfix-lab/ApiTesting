@@ -15,6 +15,8 @@ Route::get('/', 'TestController@index');
 
 Route::any('/icon', 'TestController@icon');
 
+Route::get('/captcha', 'TestController@captcha');
+
 Route::any('/ajax/create', 'TestController@store');
 //Route::get('/ajax/create', 'TestController@store');
 

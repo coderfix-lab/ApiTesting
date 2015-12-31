@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Mews\Captcha\Captcha;
-use Illuminate\Support\Facades\Validator;
+use Validator;
+use Session;
 use Illuminate\Support\Facades\Input;
+//use Illuminate\Session;
+
 
 class TestController extends Controller
 {
@@ -37,39 +40,73 @@ class TestController extends Controller
      * @param Request $request
      */
     public function icon(Request $request){
-
-
+//        session_start();
+//        var_dump($_SESSION);
+//
+//
         $author="lixiaoyu";
         $description="Http调试工具";
+////        var_dump($request->method());
+//        if ($request->method() == 'POST')
+//        {
+//           $session= Session::has('captcha');
+//
+//            var_dump($session);
+//            $rules = ['captcha' => 'required|captcha'];
+//            $validator = Validator::make($request->all(), $rules);
+//            if ($validator->fails())
+//            {
+//                echo '<p style="color: #ff0000;">Incorrect!</p>';
+//            }
+//            else
+//            {
+//                echo '<p style="color: #00ff30;">Matched :)</p>';
+//            }
+//        }
+//
+//        $form = '<form method="post" action="">';
+//        $form .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
+//        $form .= '<p>' . captcha_img() . '</p>';
+//        $form .= '<p><input type="text" name="captcha"></p>';
+//        $form .= '<p><button type="submit" name="check">Check</button></p>';
+//        $form .= '</form>';
+//        return $form;
+        return view('icon',[
+            'author'=>$author,
+            'desc'=>$description
+        ]);
+    }
 
-        if ($request->method() == "POST")
-        {
-            $rules = ['captcha' => 'required|captcha'];
-            var_dump(Input::all());
-            echo $request->get('captcha');
-            $validator = Validator::make(Input::all(), $rules);
-            if ($validator->fails())
-            {
-                echo '<p style="color: #ff0000;">Incorrect!</p>';
-            }
-            else
-            {
-                echo '<p style="color: #00ff30;">Matched :)</p>';
-            }
+
+    /**
+     * 验证码验证
+     * @param Request $request
+     */
+    public function captcha(Request $request){
+        $GtSdk = new \GeetestLib();
+        session_start();
+        $return = $GtSdk->register();
+        if ($return) {
+            $_SESSION['gtserver'] = 1;
+            $result = array(
+                'success' => 1,
+                'gt' => CAPTCHA_ID,
+                'challenge' => $GtSdk->challenge
+            );
+            echo json_encode($result);
+        }else{
+            $_SESSION['gtserver'] = 0;
+            $rnd1 = md5(rand(0,100));
+            $rnd2 = md5(rand(0,100));
+            $challenge = $rnd1 . substr($rnd2,0,2);
+            $result = array(
+                'success' => 0,
+                'gt' => CAPTCHA_ID,
+                'challenge' => $challenge
+            );
+            $_SESSION['challenge'] = $result['challenge'];
+            echo json_encode($result);
         }
-
-        $form = '<form method="post" action="">';
-        $form .= '<input type="hidden" name="_token" value="' . csrf_token() . '">';
-        $form .= '<p>' . captcha_img() . '</p>';
-        $form .= '<p><input type="text" name="captcha"></p>';
-        $form .= '<p><button type="submit" name="check">Check</button></p>';
-        $form .= '</form>';
-        return $form;
-
-//        return view('icon',[
-//            'author'=>$author,
-//            'desc'=>$description
-//        ]);
     }
 
 
