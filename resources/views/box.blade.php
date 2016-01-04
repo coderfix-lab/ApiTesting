@@ -7,7 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8">
-    <title>HTTP接口调试工具 | CoderFix.cn</title>
+    <title>{{ $title }}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="{{ $desc }}" name="description">
@@ -39,6 +39,8 @@
     <link href="{{ asset('assets/global/css/csshake.min.css')}} " type="text/css"  rel="stylesheet" >
     <link href="{{ asset('assets/global/css/animate.min.css')}} " type="text/css"  rel="stylesheet" >
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/global/plugins/bootstrap-toastr/toastr.min.css')}}"/>
+
+    <script src="{{ asset('assets/global/scripts/tj.js')}} "></script>
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -69,8 +71,8 @@
             <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
             <div class="hor-menu ">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="index.html">首页</a>
+                    <li class="">
+                        <a href="http://www.coderfix.cn/">首页</a>
                     </li>
                     <li class="menu-dropdown classic-menu-dropdown ">
                         <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
@@ -95,17 +97,19 @@
 
                         </ul>
                     </li>
-                    <li class="menu-dropdown classic-menu-dropdown ">
-                        <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
+                    <li class="menu-dropdown classic-menu-dropdown active">
+                        <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;" >
                             作品 <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu pull-left">
-                            <li >
+                            <li  class="@if ($func === "index")
+                                    active  @endif ">
                                 <a href="/">
                                     <i class="icon-briefcase"></i>
                                     Http的Api调试工具 </a>
                             </li>
-                            <li >
+                            <li  class="@if ($func === "icon")
+                                    active  @endif ">
                                 <a href="/icon">
                                     <i class="icon-briefcase"></i>
                                     ico在线转换工具 </a>
@@ -118,6 +122,9 @@
                     </li>
                     <li >
                         <a href="http://blog.csdn.net/diandianxiyu_geek">CSDN博客</a>
+                    </li>
+                    <li >
+                        <a href="http://blog.coderfix.cn/">WordPress</a>
                     </li>
 
                 </ul>
@@ -177,11 +184,11 @@
 <!-- BEGIN FOOTER -->
 <div class="page-footer">
     <div class="container">
-        2015 &copy; CoderFix.cn
+        2015 &copy; CoderFix.cn <a href="http://www.miitbeian.gov.cn/" title="京ICP备16000021号-1" target="_blank">京ICP备16000021号-1</a>
     </div>
 </div>
 <div class="scroll-to-top">
-    <i class="icon-arrow-up">我的一路陪伴感谢有你~</i>
+    <i class="icon-arrow-up"></i>
 </div>
 <!-- END FOOTER -->
 <!-- BEGIN JAVASCRIPTS (Load javascripts at bottom, this will reduce page load time) -->

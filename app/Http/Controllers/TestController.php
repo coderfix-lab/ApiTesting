@@ -18,18 +18,17 @@ class TestController extends Controller
 
     public function index(Request $request){
 
-        if($_POST){
-            var_dump($_POST);
-        }
-
-
+        $func=__FUNCTION__;
         $author="lixiaoyu";
         $description="Http调试工具";
+        $title="HTTP接口调试工具 | CoderFix.cn";
 
 
         return view('apitest',[
             'author'=>$author,
-            'desc'=>$description
+            'title'=>$title,
+            'desc'=>$description,
+            'func'=>$func
         ]);
     }
 
@@ -41,6 +40,8 @@ class TestController extends Controller
     public function icon(Request $request)
     {
 
+        $title="Icon图片格式转换工具 | CoderFix.cn";
+        $func=__FUNCTION__;
         $author = "lixiaoyu";
         $description = "Http调试工具";
         $icon_arr=[
@@ -151,7 +152,9 @@ class TestController extends Controller
             'author' => $author,
             'desc' => $description,
             'icon'=>$icon_arr,
-            'error'=>$error
+            'title'=>$title,
+            'error'=>$error,
+            'func'=>$func
         ]);
 
 
