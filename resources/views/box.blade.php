@@ -80,19 +80,19 @@
                         </a>
                         <ul class="dropdown-menu pull-left">
                             <li >
-                                <a href="http://baidu.com">
+                                <a href="http://www.coderfix.cn/#mmark">
                                     <i class="icon-briefcase"></i>
-                                    项目1 </a>
+                                    萌Mark </a>
                             </li>
                             <li >
-                                <a href="http://baidu.com">
+                                <a href="http://www.coderfix.cn/#pico">
                                     <i class="icon-briefcase"></i>
-                                    项目2 </a>
+                                    PicoPico</a>
                             </li>
                             <li >
-                                <a href="http://baidu.com">
+                                <a href="http://www.coderfix.cn/#gmzb">
                                     <i class="icon-briefcase"></i>
-                                    项目3 </a>
+                                    购萌早报 </a>
                             </li>
 
                         </ul>
