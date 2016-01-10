@@ -235,6 +235,7 @@
 <script src="{{ asset('assets/global/plugins/bootstrap-toastr/toastr.min.js')}} "></script>
 {{--把js放入文件中--}}
 <script src="{{ asset('assets/global/scripts/main.js')}} "></script>
+<script src="{{ asset('assets/global/scripts/tj.js')}} "></script>
 <!-- END JAVASCRIPTS -->
 </body>
 <!-- END BODY -->
