@@ -31,7 +31,7 @@ $('#buttimes').click( function() {
         },
 
         beforeSend:function(){
-            //显示转菊花
+            //
             loading("info","查询中请稍候","提示")
         },
         success: function (data) {

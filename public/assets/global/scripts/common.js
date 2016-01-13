@@ -36,7 +36,7 @@ function loading(status,msg,title){
 
     toastr.options = {
         "closeButton": true,
-        "debug": true,
+        "debug": false,
         "positionClass": "toast-top-right",
         "onclick": null,
         "showDuration": "1000",

@@ -297,6 +297,7 @@ class TestController extends Controller
 
 
         $alert="目标页面发生变化,请通知管理员修改处理逻辑";
+        $num="";
         //根据类型进行判断
         switch ($method)
         {
@@ -317,10 +318,62 @@ class TestController extends Controller
                 }
 
                 break;
-            case 2:
+            case 'meipai':
+                $content = $this->curl($url,"get");
+
+                $str= ($content[0]);
+
+
+                //点赞数量
+                $regex4="/.*?<span class=\"pr top-2\">(.*?)<\/span>.*?/";
+
+                if(preg_match_all($regex4, $str, $matches)){
+
+                    $num.= '点赞:'.$matches[1][0] ."  ";
+                }else{
+                    $num.='点赞:'.'0' ."  ";
+                }
+
+                //评论数量
+
+                $regex1="/.*?<span id=\"commentCount\" class=\"pr top-3\">(.*?)<\/span>.*?/";
+
+                if(preg_match_all($regex1, $str, $matches)){
+
+                    $num.= '评论:'.$matches[1][0] ."  ";
+                }else{
+                    $num.='评论:'.'0' ."  ";
+                }
+
 
                 break;
-            case 3:
+            case '秒拍':
+
+                $content = $this->curl($url,"POST");
+
+                $str= ($content[0]);
+
+
+                //点赞数量
+                $regex4="/.*?<em style=\"color:\">(.*?)<\/em>.*?/";
+
+                if(preg_match_all($regex4, $str, $matches)){
+
+                    $num.= '点赞:'.$matches[1][0] ."  ";
+                }else{
+                    $num.='点赞:'.'0' ."  ";
+                }
+
+                //评论数量
+
+                $regex1="/.*?<span id=\"commentCount\" class=\"pr top-3\">(.*?)<\/span>.*?/";
+
+                if(preg_match_all($regex1, $str, $matches)){
+
+                    $num.= '评论:'.$matches[1][0] ."  ";
+                }else{
+                    $num.='评论:'.'0' ."  ";
+                }
 
                 break;
             default:
