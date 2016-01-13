@@ -349,9 +349,53 @@ class TestController extends Controller
                 break;
             case 'miaopai':
 
+                $content = $this->curl($url,'post');
+
+                $str= ($content[0]);
+
+
+                //点赞数量
+                $regex4="/.*?<em style=\"color:\">(.*?)<\/em>.*?/";
+
+                if(preg_match_all($regex4, $str, $matches)){
+
+                    $num.= '点赞:'.$matches[1][0] ."  ";
+                }else{
+                    $num.='点赞:'.'无法获取' ."  ";
+                }
+
+                //评论数量
+
+                $regex1="/.*?<a class=\'a\' href=\"javascript:pre_review\(\);\">(.*?)<\/a>.*?/";
+
+                if(preg_match_all($regex1, $str, $matches)){
+
+                    $num.= '评论:'. str_replace("评论","", $matches[1][0]) ."  ";
+
+                    //$base=$matches[1][0];
+                }else{
+                    $num.='评论:'.'无法获取' ."  ";
+                }
+
+                break;
+
+
+            case 'blibli':
+
                 $content = $this->curl($url,"get");
 
                 $str= ($content[0]);
+
+
+                //点击
+                $regex4="/.*?<span id=\"dianji\">(.*?)<\/span>.*?/";
+
+                if(preg_match_all($regex4, $str, $matches)){
+
+                    $num.= '点击:'.$matches[1][0] ."  ";
+                }else{
+                    $num.='点击:'.'无法获取' ."  ";
+                }
 
 
                 //点赞数量
@@ -383,7 +427,7 @@ class TestController extends Controller
         }
 
 
-        $result=['result'=>$num];
+        $result=['result'=>$str];
         return response()->json($result);
 
     }
@@ -399,19 +443,19 @@ class TestController extends Controller
 
         $curl = curl_init($url);
         curl_setopt ($curl, CURLOPT_CUSTOMREQUEST, $method );
-        curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.1) Gecko/20061204 Firefox/2.0.0.1");
+        curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.152 Safari/537.36");
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($curl, CURLOPT_VERBOSE, 1);
         curl_setopt($curl, CURLOPT_HEADER, 1);
 
 
-        $header[0] = "Accept: text/xml,application/xml,application/xhtml+xml,";
-        $header[0] .= "text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5";
+        $header[0] = "Accept: text/html,application/xhtml+xml,application/xml;";
+        $header[0] .= "q=0.9,image/webp,*/*;q=0.8";
         $header[] = "Cache-Control: max-age=0";
         $header[] = "Connection: keep-alive";
-        $header[] = "Keep-Alive: 300";
-        $header[] = "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7";
-        $header[] = "Accept-Language: en-us,en;q=0.5";
+        $header[] = "Keep-Alive: 10";
+        $header[] = "Accept-Encoding: gzip, deflate, sdch";
+        $header[] = "Accept-Language: zh-CN,zh;q=0.8,en;q=0.6";
         $header[] = "Pragma: "; // browsers keep this blank.
         curl_setopt($curl, CURLOPT_HTTPHEADER, array_merge($header,$headers));
 

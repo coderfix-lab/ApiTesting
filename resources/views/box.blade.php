@@ -114,6 +114,13 @@
                                     <i class="icon-briefcase"></i>
                                     ico在线转换工具 </a>
                             </li>
+                            <li  class="@if ($func === "playtimes")
+                                    active  @endif ">
+                                <a href="/play/times">
+                                    <i class="icon-briefcase"></i>
+                               短视频播放次数查询
+                                </a>
+                            </li>
 
                         </ul>
                     </li>

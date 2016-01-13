@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74c3ddfa-f3ab-4429-a5b3-75962045d165" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/box.blade.php" afterPath="$PROJECT_DIR$/resources/views/box.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/playtimes.blade.php" afterPath="$PROJECT_DIR$/resources/views/playtimes.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/bin/php-parse" afterPath="$PROJECT_DIR$/vendor/bin/php-parse" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/bin/phpunit" afterPath="$PROJECT_DIR$/vendor/bin/phpunit" />
     </list>
@@ -27,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="box.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="box.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/box.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="193" column="51" selection-start-line="193" selection-start-column="51" selection-end-line="193" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.5487805">
+              <caret line="117" column="53" selection-start-line="117" selection-start-column="53" selection-end-line="117" selection-end-column="53" />
               <folding />
             </state>
           </provider>
@@ -93,19 +94,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TestController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.08261803">
-              <caret line="314" column="30" selection-start-line="314" selection-start-column="30" selection-end-line="314" selection-end-column="30" />
+            <state vertical-scroll-proportion="-20.083334">
+              <caret line="454" column="45" selection-start-line="454" selection-start-column="45" selection-end-line="454" selection-end-column="45" />
               <folding>
                 <element signature="e#40#68#0#PHP" expanded="true" />
                 <element signature="e#1864#5810#0#PHP" expanded="false" />
-                <marker date="1452673032000" expanded="true" signature="8880:8931" placeholder="..." />
-                <marker date="1452673032000" expanded="true" signature="9929:9980" placeholder="..." />
-                <marker date="1452673032000" expanded="true" signature="11179:11185" placeholder="..." />
-                <marker date="1452673032000" expanded="true" signature="11187:11295" placeholder="..." />
-                <marker date="1452673032000" expanded="true" signature="11525:11622" placeholder="..." />
+                <marker date="1452675706000" expanded="true" signature="8880:8931" placeholder="..." />
+                <marker date="1452675706000" expanded="true" signature="9929:9980" placeholder="..." />
+                <marker date="1452675706000" expanded="true" signature="11180:11186" placeholder="..." />
+                <marker date="1452675706000" expanded="true" signature="11188:11296" placeholder="..." />
+                <marker date="1452675706000" expanded="true" signature="11526:11623" placeholder="..." />
+                <marker date="1452675706000" expanded="true" signature="12314:12320" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -124,8 +126,8 @@
       <file leaf-file-name="playtimes.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/playtimes.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-25.0">
-              <caret line="54" column="50" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
+            <state vertical-scroll-proportion="-13.125">
+              <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -188,12 +190,12 @@
         <option value="$PROJECT_DIR$/resources/views/apitest.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/icon.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
-        <option value="$PROJECT_DIR$/resources/views/box.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/global/scripts/main.js" />
-        <option value="$PROJECT_DIR$/resources/views/playtimes.blade.php" />
         <option value="$PROJECT_DIR$/public/assets/global/scripts/playtime.js" />
         <option value="$PROJECT_DIR$/public/assets/global/scripts/common.js" />
+        <option value="$PROJECT_DIR$/resources/views/box.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/TestController.php" />
+        <option value="$PROJECT_DIR$/resources/views/playtimes.blade.php" />
       </list>
     </option>
   </component>
@@ -212,8 +214,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="width" value="1920" />
-    <option name="height" value="1080" />
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -451,7 +453,7 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="settings.editor.splitter.proportion" value="0.32502493" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TouchCapthcaBackend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SimpleWebPage" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="true" />
   </component>
@@ -508,11 +510,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2257721" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25885227" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -849,14 +851,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/box.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="193" column="51" selection-start-line="193" selection-start-column="51" selection-end-line="193" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -921,27 +915,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.083334">
+          <caret line="454" column="45" selection-start-line="454" selection-start-column="45" selection-end-line="454" selection-end-column="45" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+            <element signature="e#1864#5810#0#PHP" expanded="false" />
+            <marker date="1452675706000" expanded="true" signature="8880:8931" placeholder="..." />
+            <marker date="1452675706000" expanded="true" signature="9929:9980" placeholder="..." />
+            <marker date="1452675706000" expanded="true" signature="11180:11186" placeholder="..." />
+            <marker date="1452675706000" expanded="true" signature="11188:11296" placeholder="..." />
+            <marker date="1452675706000" expanded="true" signature="11526:11623" placeholder="..." />
+            <marker date="1452675706000" expanded="true" signature="12314:12320" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/playtimes.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.0">
-          <caret line="54" column="50" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
+        <state vertical-scroll-proportion="-13.125">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/TestController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/box.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08261803">
-          <caret line="314" column="30" selection-start-line="314" selection-start-column="30" selection-end-line="314" selection-end-column="30" />
-          <folding>
-            <element signature="e#40#68#0#PHP" expanded="true" />
-            <element signature="e#1864#5810#0#PHP" expanded="false" />
-            <marker date="1452673032000" expanded="true" signature="8880:8931" placeholder="..." />
-            <marker date="1452673032000" expanded="true" signature="9929:9980" placeholder="..." />
-            <marker date="1452673032000" expanded="true" signature="11179:11185" placeholder="..." />
-            <marker date="1452673032000" expanded="true" signature="11187:11295" placeholder="..." />
-            <marker date="1452673032000" expanded="true" signature="11525:11622" placeholder="..." />
-          </folding>
+        <state vertical-scroll-proportion="0.5487805">
+          <caret line="117" column="53" selection-start-line="117" selection-start-column="53" selection-end-line="117" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
