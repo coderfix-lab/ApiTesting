@@ -23,7 +23,6 @@ class TestController extends Controller
         $description="Http调试工具";
         $title="HTTP接口调试工具 | CoderFix.cn";
 
-
         return view('apitest',[
             'author'=>$author,
             'title'=>$title,
@@ -242,6 +241,98 @@ class TestController extends Controller
         return response()->json($result);
 
     }
+
+
+    /**
+     * 获取页面的播放次数
+     */
+    public function playtimes(Request $request){
+
+        //提交
+        if($request->method() == "POST"){
+            $alert="目标页面发生变化,请通知管理员修改处理逻辑";
+            $url="http://www.kuaishou.com/i/photo/lwx?cc=copylink&fid=26947234&et=1_a%2F1523214106412367873_h80&type=2&userId=42682605&photoId=533111883";
+            //通过get方式并输出内容
+            $content = $this->curl($url,"POST");
+
+            $str= ($content[0]);
+
+
+            $regex4="/.*?<span style=\"font-size:14px;color:#7c818b;vertical-align:middle;\">(.*?) people like this<\/span>.*?/";
+
+
+            if(preg_match_all($regex4, $str, $matches)){
+
+               $num=$matches[1][0];
+            }else{
+                $num=$alert;
+            }
+
+            echo $num;
+            exit();
+        }
+        $func=__FUNCTION__;
+        $author="lixiaoyu";
+        $description="短视频传播渠道播放次数查询";
+        $title="短视频传播渠道播放次数查询 | CoderFix.cn";
+
+
+        return view('playtimes',[
+            'author'=>$author,
+            'title'=>$title,
+            'desc'=>$description,
+            'func'=>$func
+        ]);
+
+    }
+
+
+    //ajax请求
+    public function gettimes(Request $request)
+    {
+
+        $arr= $request->all();
+        $method=$arr['method'];
+        $url=$arr['url'];
+
+
+        $alert="目标页面发生变化,请通知管理员修改处理逻辑";
+        //根据类型进行判断
+        switch ($method)
+        {
+            case 'gif':
+                $content = $this->curl($url,"POST");
+
+                $str= ($content[0]);
+
+
+                $regex4="/.*?<span style=\"font-size:14px;color:#7c818b;vertical-align:middle;\">(.*?) people like this<\/span>.*?/";
+
+
+                if(preg_match_all($regex4, $str, $matches)){
+
+                    $num=$matches[1][0];
+                }else{
+                    $num=$alert;
+                }
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            default:
+
+        }
+
+
+        $result=['result'=>$num];
+        return response()->json($result);
+
+    }
+
 
 
     function curl($url, $method='GET',$fields = [], $headers=[],$auth = false){

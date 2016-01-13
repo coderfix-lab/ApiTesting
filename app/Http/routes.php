@@ -24,6 +24,13 @@ Route::any('/ajax/create', 'TestController@store');
 
 //下载文件
 Route::get('/icon/download/{path}', 'TestController@download');
+
+
+//短视频传播渠道播放次数查询
+Route::get('/play/times', 'TestController@playtimes');
+//ajax查询路经
+Route::post('/play/get', 'TestController@gettimes');
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
