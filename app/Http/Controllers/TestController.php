@@ -312,7 +312,7 @@ class TestController extends Controller
 
                 if(preg_match_all($regex4, $str, $matches)){
 
-                    $num=$matches[1][0];
+                    $num='点赞 :'.$matches[1][0];
                 }else{
                     $num=$alert;
                 }
@@ -347,9 +347,9 @@ class TestController extends Controller
 
 
                 break;
-            case '秒拍':
+            case 'miaopai':
 
-                $content = $this->curl($url,"POST");
+                $content = $this->curl($url,"get");
 
                 $str= ($content[0]);
 
@@ -361,18 +361,20 @@ class TestController extends Controller
 
                     $num.= '点赞:'.$matches[1][0] ."  ";
                 }else{
-                    $num.='点赞:'.'0' ."  ";
+                    $num.='点赞:'.'无法获取' ."  ";
                 }
 
                 //评论数量
 
-                $regex1="/.*?<span id=\"commentCount\" class=\"pr top-3\">(.*?)<\/span>.*?/";
+                $regex1="/.*?<a class=\'a\' href=\"javascript:pre_review\(\);\">(.*?)<\/a>.*?/";
 
                 if(preg_match_all($regex1, $str, $matches)){
 
-                    $num.= '评论:'.$matches[1][0] ."  ";
+                    $num.= '评论:'. str_replace("评论","", $matches[1][0]) ."  ";
+
+                    //$base=$matches[1][0];
                 }else{
-                    $num.='评论:'.'0' ."  ";
+                    $num.='评论:'.'无法获取' ."  ";
                 }
 
                 break;
